@@ -12402,10 +12402,37 @@ function showTreasureBox(show) {
   if (box) box.style.display = show ? 'flex' : 'none';
 }
 function showBox(boxToShow) {
-  [homeBox, selectBox, readerBox, aiGenerateBox, readingTrainingBox, grammarTrainingBox, grammarSubmenuBox, kanjiVocabTrainingBox, kanjiVocabProblemBox, kanjiVocabResultBox, kotowazaMenuBox, kotowazaStudyBox, kotowazaTestBox, kotowazaResultBox, kotowazaStudyCompleteBox, logicTrainingBox, concreteAbstractBox, pronounReferenceBox, grammarProblemBox, grammarResultBox, particlesBox, clauseDivisionBox, clauseRearrangementBox, subjectPredicateBox, modifierBox, sentenceStructureBox, gemExchangeBox].forEach(b => b && b.classList.remove('show'));
-  boxToShow.classList.add('show');
-  if (boxToShow === readerBox || boxToShow === concreteAbstractBox) showTreasureBox(true);
-  else showTreasureBox(false);
+  console.log('=== SHOWBOX FUNCTION CALLED ===');
+  console.log('boxToShow:', boxToShow);
+  console.log('boxToShow id:', boxToShow?.id);
+  console.log('boxToShow exists:', !!boxToShow);
+  
+  try {
+    [homeBox, selectBox, readerBox, aiGenerateBox, readingTrainingBox, grammarTrainingBox, grammarSubmenuBox, kanjiVocabTrainingBox, kanjiVocabProblemBox, kanjiVocabResultBox, kotowazaMenuBox, kotowazaStudyBox, kotowazaTestBox, kotowazaResultBox, kotowazaStudyCompleteBox, logicTrainingBox, concreteAbstractBox, pronounReferenceBox, grammarProblemBox, grammarResultBox, particlesBox, clauseDivisionBox, clauseRearrangementBox, subjectPredicateBox, modifierBox, sentenceStructureBox, gemExchangeBox].forEach(b => {
+      if (b) {
+        console.log('Removing show class from:', b.id);
+        b.classList.remove('show');
+      }
+    });
+    
+    console.log('Adding show class to:', boxToShow?.id);
+    boxToShow.classList.add('show');
+    console.log('Show class added successfully');
+    
+    if (boxToShow === readerBox || boxToShow === concreteAbstractBox) {
+      console.log('Showing treasure box');
+      showTreasureBox(true);
+    } else {
+      console.log('Hiding treasure box');
+      showTreasureBox(false);
+    }
+    
+    console.log('=== SHOWBOX FUNCTION COMPLETED ===');
+    
+  } catch (error) {
+    console.error('Error in showBox function:', error);
+    console.error('Error stack:', error.stack);
+  }
 }
 
 // 論理トレーニングメニューを描画
@@ -23883,24 +23910,76 @@ rt {
           'venn-logic': 'goLogicBtn'
         };
         
-                // シンプルなタッチイベントハンドラー
+                // 詳細デバッグ付きタッチイベントハンドラー
         const handleTouch = (e) => {
           e.preventDefault();
           e.stopPropagation();
           
           const circleId = circle.getAttribute('id');
+          console.log('=== TOUCH DEBUG START ===');
           console.log('Touch on circle:', circleId);
           
-          // 直接onclickの内容を実行
+          // 保存されたonclick内容を確認
           const originalOnclick = circle.dataset.originalOnclick;
+          console.log('Saved onclick:', originalOnclick);
+          
           if (originalOnclick) {
-            console.log('Executing saved onclick:', originalOnclick);
             try {
+              console.log('About to execute onclick...');
+              
+              // まず隠しボタンの存在を確認
+              if (originalOnclick.includes('goReadingTrainingBtn')) {
+                const btn = document.getElementById('goReadingTrainingBtn');
+                console.log('goReadingTrainingBtn exists:', !!btn);
+                console.log('goReadingTrainingBtn onclick:', !!btn?.onclick);
+                if (btn) {
+                  console.log('Executing btn.click()...');
+                  btn.click();
+                  console.log('btn.click() completed');
+                }
+              } else if (originalOnclick.includes('goGrammarTrainingBtn')) {
+                const btn = document.getElementById('goGrammarTrainingBtn');
+                console.log('goGrammarTrainingBtn exists:', !!btn);
+                console.log('goGrammarTrainingBtn onclick:', !!btn?.onclick);
+                if (btn) {
+                  console.log('Executing btn.click()...');
+                  btn.click();
+                  console.log('btn.click() completed');
+                }
+              } else if (originalOnclick.includes('goKanjiVocabBtn')) {
+                const btn = document.getElementById('goKanjiVocabBtn');
+                console.log('goKanjiVocabBtn exists:', !!btn);
+                console.log('goKanjiVocabBtn onclick:', !!btn?.onclick);
+                if (btn) {
+                  console.log('Executing btn.click()...');
+                  btn.click();
+                  console.log('btn.click() completed');
+                }
+              } else if (originalOnclick.includes('goLogicBtn')) {
+                const btn = document.getElementById('goLogicBtn');
+                console.log('goLogicBtn exists:', !!btn);
+                console.log('goLogicBtn onclick:', !!btn?.onclick);
+                if (btn) {
+                  console.log('Executing btn.click()...');
+                  btn.click();
+                  console.log('btn.click() completed');
+                }
+              }
+              
+              // 念のため元のコードも実行
+              console.log('Also executing original onclick via eval...');
               eval(originalOnclick);
+              console.log('eval completed');
+              
             } catch (error) {
               console.error('Error executing onclick:', error);
+              console.error('Error stack:', error.stack);
             }
+          } else {
+            console.error('No saved onclick found!');
           }
+          
+          console.log('=== TOUCH DEBUG END ===');
         };
         
         // タッチデバイスではタッチイベントのみを使用
@@ -23991,7 +24070,7 @@ rt {
       });
     };
     
-    // 隠しボタンをグローバルに設定
+    // 隠しボタンをグローバルに設定し、onclickイベントも確実に設定
     const setupGlobalButtons = () => {
       window.goReadingTrainingBtn = document.getElementById('goReadingTrainingBtn');
       window.goGrammarTrainingBtn = document.getElementById('goGrammarTrainingBtn');
@@ -24003,16 +24082,135 @@ rt {
       window.kanjiVocabTrainingBox = document.getElementById('kanjiVocabTrainingBox');
       window.logicTrainingBox = document.getElementById('logicTrainingBox');
       
-      console.log('Global buttons setup:', {
+      console.log('=== BUTTON SETUP DEBUG ===');
+      console.log('Buttons found:', {
         goReadingTrainingBtn: !!window.goReadingTrainingBtn,
         goGrammarTrainingBtn: !!window.goGrammarTrainingBtn,
         goKanjiVocabBtn: !!window.goKanjiVocabBtn,
-        goLogicBtn: !!window.goLogicBtn,
+        goLogicBtn: !!window.goLogicBtn
+      });
+      
+      console.log('Boxes found:', {
         readingTrainingBox: !!window.readingTrainingBox,
         grammarTrainingBox: !!window.grammarTrainingBox,
         kanjiVocabTrainingBox: !!window.kanjiVocabTrainingBox,
         logicTrainingBox: !!window.logicTrainingBox
       });
+      
+      // onclickイベントの存在確認
+      console.log('Button onclick events:', {
+        goReadingTrainingBtn: !!window.goReadingTrainingBtn?.onclick,
+        goGrammarTrainingBtn: !!window.goGrammarTrainingBtn?.onclick,
+        goKanjiVocabBtn: !!window.goKanjiVocabBtn?.onclick,
+        goLogicBtn: !!window.goLogicBtn?.onclick
+      });
+      
+      // もしonclickが設定されていなければ手動で設定
+      if (window.goReadingTrainingBtn && !window.goReadingTrainingBtn.onclick) {
+        console.log('Setting up goReadingTrainingBtn onclick manually...');
+        window.goReadingTrainingBtn.onclick = () => {
+          console.log('Manual onclick: goReadingTrainingBtn');
+          console.log('showBox function exists:', typeof window.showBox);
+          console.log('readingTrainingBox exists:', !!window.readingTrainingBox);
+          console.log('renderReadingTrainingMenu exists:', typeof window.renderReadingTrainingMenu);
+          
+          if (window.showBox && window.readingTrainingBox) {
+            console.log('Calling showBox for reading training...');
+            window.showBox(window.readingTrainingBox);
+            console.log('showBox called successfully');
+            
+            if (window.renderReadingTrainingMenu) {
+              console.log('Calling renderReadingTrainingMenu...');
+              window.renderReadingTrainingMenu();
+              console.log('renderReadingTrainingMenu called successfully');
+            } else {
+              console.error('renderReadingTrainingMenu function not found');
+            }
+          } else {
+            console.error('showBox or readingTrainingBox not available');
+          }
+        };
+      }
+      
+      if (window.goGrammarTrainingBtn && !window.goGrammarTrainingBtn.onclick) {
+        console.log('Setting up goGrammarTrainingBtn onclick manually...');
+        window.goGrammarTrainingBtn.onclick = () => {
+          console.log('Manual onclick: goGrammarTrainingBtn');
+          console.log('showBox function exists:', typeof window.showBox);
+          console.log('grammarTrainingBox exists:', !!window.grammarTrainingBox);
+          console.log('renderGrammarMenu exists:', typeof window.renderGrammarMenu);
+          
+          if (window.showBox && window.grammarTrainingBox) {
+            console.log('Calling showBox for grammar training...');
+            window.showBox(window.grammarTrainingBox);
+            console.log('showBox called successfully');
+            
+            if (window.renderGrammarMenu) {
+              console.log('Calling renderGrammarMenu...');
+              window.renderGrammarMenu();
+              console.log('renderGrammarMenu called successfully');
+            } else {
+              console.error('renderGrammarMenu function not found');
+            }
+          } else {
+            console.error('showBox or grammarTrainingBox not available');
+          }
+        };
+      }
+      
+      if (window.goKanjiVocabBtn && !window.goKanjiVocabBtn.onclick) {
+        console.log('Setting up goKanjiVocabBtn onclick manually...');
+        window.goKanjiVocabBtn.onclick = () => {
+          console.log('Manual onclick: goKanjiVocabBtn');
+          console.log('showBox function exists:', typeof window.showBox);
+          console.log('kanjiVocabTrainingBox exists:', !!window.kanjiVocabTrainingBox);
+          console.log('renderKanjiVocabMenu exists:', typeof window.renderKanjiVocabMenu);
+          
+          if (window.showBox && window.kanjiVocabTrainingBox) {
+            console.log('Calling showBox for kanji vocab training...');
+            window.showBox(window.kanjiVocabTrainingBox);
+            console.log('showBox called successfully');
+            
+            if (window.renderKanjiVocabMenu) {
+              console.log('Calling renderKanjiVocabMenu...');
+              window.renderKanjiVocabMenu();
+              console.log('renderKanjiVocabMenu called successfully');
+            } else {
+              console.error('renderKanjiVocabMenu function not found');
+            }
+          } else {
+            console.error('showBox or kanjiVocabTrainingBox not available');
+          }
+        };
+      }
+      
+      if (window.goLogicBtn && !window.goLogicBtn.onclick) {
+        console.log('Setting up goLogicBtn onclick manually...');
+        window.goLogicBtn.onclick = () => {
+          console.log('Manual onclick: goLogicBtn');
+          console.log('showBox function exists:', typeof window.showBox);
+          console.log('logicTrainingBox exists:', !!window.logicTrainingBox);
+          console.log('renderLogicMenu exists:', typeof window.renderLogicMenu);
+          
+          if (window.showBox && window.logicTrainingBox) {
+            console.log('Calling showBox for logic training...');
+            window.showBox(window.logicTrainingBox);
+            console.log('showBox called successfully');
+            
+            if (window.renderLogicMenu) {
+              console.log('Calling renderLogicMenu...');
+              window.renderLogicMenu();
+              console.log('renderLogicMenu called successfully');
+            } else {
+              console.error('renderLogicMenu function not found');
+            }
+          } else {
+            console.error('showBox or logicTrainingBox not available');
+          }
+        };
+      }
+      
+      console.log('=== BUTTON SETUP COMPLETE ===');
     };
     
     // 初期セットアップ（複数回実行して確実に設定）
@@ -24022,6 +24220,13 @@ rt {
       setupButtonTouchEvents();
       setupTouchForDynamicElements();
     };
+    
+    // DOMContentLoadedの直後に実行
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupAllTouchEvents);
+    } else {
+      setupAllTouchEvents();
+    }
     
     // 複数のタイミングで実行
     setTimeout(setupAllTouchEvents, 100);
