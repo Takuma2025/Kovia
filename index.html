@@ -9276,193 +9276,109 @@ ruby rt, rt {
     </div>
 
     <!-- ▼音読するボタン 2つに分岐（既存・AI生成）▼ -->
-    <!-- ベン図メニューボタン -->
-    <div class="venn-diagram-container" style="display: flex; justify-content: center; align-items: center; margin: 32px 0;">
-      <svg width="400" height="340" viewBox="0 0 400 340" style="cursor: pointer;">
-        <defs>
-          <!-- グラデーション定義 -->
-          <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#7dd3fc;stop-opacity:0.8" />
-            <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.6" />
-          </linearGradient>
-          <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#fed7aa;stop-opacity:0.8" />
-            <stop offset="100%" style="stop-color:#f97316;stop-opacity:0.6" />
-          </linearGradient>
-          <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#e9d5ff;stop-opacity:0.8" />
-            <stop offset="100%" style="stop-color:#a855f7;stop-opacity:0.6" />
-          </linearGradient>
-          <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#bbf7d0;stop-opacity:0.8" />
-            <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.6" />
-          </linearGradient>
-          
-          <!-- 影とグロー効果 -->
-          <filter id="buttonShadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="0" dy="4" flood-opacity="0.25" flood-color="black"/>
-            <feDropShadow dx="0" dy="2" flood-opacity="0.15" flood-color="white"/>
-          </filter>
-          
-          <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.8"/>
-            <feDropShadow dx="0" dy="0" stdDeviation="3" flood-opacity="0.4"/>
-          </filter>
-          
-          <!-- 各トレーニング用の色付き影フィルター -->
-          <filter id="blueTextShadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="2" dy="2" stdDeviation="1" flood-color="#0066cc" flood-opacity="0.7"/>
-          </filter>
-          
-          <filter id="orangeTextShadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="2" dy="2" stdDeviation="1" flood-color="#ff6600" flood-opacity="0.7"/>
-          </filter>
-          
-          <filter id="purpleTextShadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="2" dy="2" stdDeviation="1" flood-color="#8800cc" flood-opacity="0.7"/>
-          </filter>
-          
-          <filter id="greenTextShadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="2" dy="2" stdDeviation="1" flood-color="#00aa44" flood-opacity="0.7"/>
-          </filter>
-        </defs>
+    <!-- トレーニングメニューボタン -->
+    <div class="training-menu-container" style="margin: 32px 0;">
+      <style>
+        .training-menu-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          max-width: 500px;
+          margin: 0 auto;
+        }
         
-        <!-- 全ての円を同じレイヤーで描画、mix-blend-modeで重なり部分を自然に -->
-        <g id="circleGroup" style="mix-blend-mode: multiply;">
-          <!-- 青色円 - 音読トレーニング -->
-          <circle id="venn-reading" cx="130" cy="110" r="95" 
-                  fill="url(#blueGradient)" stroke="#2563eb" stroke-width="3"
-                  filter="url(#buttonShadow)"
-                  style="cursor: pointer; transition: all 0.1s ease;"
-                  onmouseover="this.setAttribute('r', '105'); this.setAttribute('stroke-width', '4'); 
-                              document.getElementById('venn-reading-furigana').setAttribute('font-size', '12');
-                              document.getElementById('venn-reading-text').setAttribute('font-size', '18');
-                              document.getElementById('venn-reading-text').setAttribute('y', '98');
-                              document.getElementById('venn-reading-text').querySelector('tspan:last-child').setAttribute('dy', '18');
-                              this.parentNode.appendChild(this);
-                              this.parentNode.parentNode.appendChild(document.getElementById('venn-reading-furigana'));
-                              this.parentNode.parentNode.appendChild(document.getElementById('venn-reading-text'));"
-                  onmouseout="this.setAttribute('r', '95'); this.setAttribute('stroke-width', '3');
-                              document.getElementById('venn-reading-furigana').setAttribute('font-size', '10');
-                              document.getElementById('venn-reading-text').setAttribute('font-size', '16');
-                              document.getElementById('venn-reading-text').setAttribute('y', '95');
-                              document.getElementById('venn-reading-text').querySelector('tspan:last-child').setAttribute('dy', '16');"
-                  onclick="document.getElementById('goReadingTrainingBtn').click();">
-          </circle>
-          
-          <!-- 緑色円 - 文法トレーニング -->
-          <circle id="venn-grammar" cx="270" cy="110" r="95" 
-                  fill="url(#orangeGradient)" stroke="#ea580c" stroke-width="3"
-                  filter="url(#buttonShadow)"
-                  style="cursor: pointer; transition: all 0.1s ease;"
-                  onmouseover="this.setAttribute('r', '105'); this.setAttribute('stroke-width', '4');
-                              document.getElementById('venn-grammar-furigana').setAttribute('font-size', '12');
-                              document.getElementById('venn-grammar-text').setAttribute('font-size', '18');
-                              document.getElementById('venn-grammar-text').setAttribute('y', '98');
-                              document.getElementById('venn-grammar-text').querySelector('tspan:last-child').setAttribute('dy', '18');
-                              this.parentNode.appendChild(this);
-                              this.parentNode.parentNode.appendChild(document.getElementById('venn-grammar-furigana'));
-                              this.parentNode.parentNode.appendChild(document.getElementById('venn-grammar-text'));"
-                  onmouseout="this.setAttribute('r', '95'); this.setAttribute('stroke-width', '3');
-                              document.getElementById('venn-grammar-furigana').setAttribute('font-size', '10');
-                              document.getElementById('venn-grammar-text').setAttribute('font-size', '16');
-                              document.getElementById('venn-grammar-text').setAttribute('y', '95');
-                              document.getElementById('venn-grammar-text').querySelector('tspan:last-child').setAttribute('dy', '16');"
-                  onclick="document.getElementById('goGrammarTrainingBtn').click();">
-          </circle>
-          
-          <!-- 紫色円 - 漢字・語彙トレーニング -->
-          <circle id="venn-kanji" cx="130" cy="230" r="95" 
-                  fill="url(#purpleGradient)" stroke="#9333ea" stroke-width="3"
-                  filter="url(#buttonShadow)"
-                  style="cursor: pointer; transition: all 0.1s ease;"
-                  onmouseover="this.setAttribute('r', '105'); this.setAttribute('stroke-width', '4');
-                              document.getElementById('venn-kanji-furigana').setAttribute('font-size', '12');
-                              document.getElementById('venn-kanji-text').setAttribute('font-size', '18');
-                              document.getElementById('venn-kanji-text').setAttribute('y', '258');
-                              document.getElementById('venn-kanji-text').querySelector('tspan:last-child').setAttribute('dy', '18');
-                              this.parentNode.appendChild(this);
-                              this.parentNode.parentNode.appendChild(document.getElementById('venn-kanji-furigana'));
-                              this.parentNode.parentNode.appendChild(document.getElementById('venn-kanji-text'));"
-                  onmouseout="this.setAttribute('r', '95'); this.setAttribute('stroke-width', '3');
-                              document.getElementById('venn-kanji-furigana').setAttribute('font-size', '10');
-                              document.getElementById('venn-kanji-text').setAttribute('font-size', '16');
-                              document.getElementById('venn-kanji-text').setAttribute('y', '255');
-                              document.getElementById('venn-kanji-text').querySelector('tspan:last-child').setAttribute('dy', '16');"
-                  onclick="document.getElementById('goKanjiVocabBtn').click();">
-          </circle>
-          
-          <!-- オレンジ色円 - 論理トレーニング -->
-          <circle id="venn-logic" cx="270" cy="230" r="95" 
-                  fill="url(#greenGradient)" stroke="#16a34a" stroke-width="3"
-                  filter="url(#buttonShadow)"
-                  style="cursor: pointer; transition: all 0.1s ease;"
-                  onmouseover="this.setAttribute('r', '105'); this.setAttribute('stroke-width', '4');
-                              document.getElementById('venn-logic-furigana').setAttribute('font-size', '12');
-                              document.getElementById('venn-logic-text').setAttribute('font-size', '18');
-                              document.getElementById('venn-logic-text').setAttribute('y', '258');
-                              document.getElementById('venn-logic-text').querySelector('tspan:last-child').setAttribute('dy', '18');
-                              this.parentNode.appendChild(this);
-                              this.parentNode.parentNode.appendChild(document.getElementById('venn-logic-furigana'));
-                              this.parentNode.parentNode.appendChild(document.getElementById('venn-logic-text'));"
-                  onmouseout="this.setAttribute('r', '95'); this.setAttribute('stroke-width', '3');
-                              document.getElementById('venn-logic-furigana').setAttribute('font-size', '10');
-                              document.getElementById('venn-logic-text').setAttribute('font-size', '16');
-                              document.getElementById('venn-logic-text').setAttribute('y', '255');
-                              document.getElementById('venn-logic-text').querySelector('tspan:last-child').setAttribute('dy', '16');"
-                  onclick="document.getElementById('goLogicBtn').click();">
-          </circle>
-        </g>
+        @media (max-width: 768px) {
+          .training-menu-grid {
+            grid-template-columns: 1fr;
+            max-width: 300px;
+          }
+        }
         
-        <!-- ラベル -->
-        <!-- 音読トレーニング -->
-        <!-- ふりがな -->
-        <text id="venn-reading-furigana" x="110" y="78" text-anchor="middle" fill="white" font-size="10" font-weight="600" 
-              filter="url(#blueTextShadow)" style="pointer-events: none; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 1px; opacity: 0.9; transition: font-size 0.1s ease;">
-          <tspan x="110" dy="0">おんどく</tspan>
-        </text>
-        <text id="venn-reading-text" x="110" y="95" text-anchor="middle" fill="white" font-size="16" font-weight="900" 
-              filter="url(#blueTextShadow)" style="pointer-events: none; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 0.5px; transition: font-size 0.1s ease;">
-          <tspan x="110" dy="0">音読</tspan>
-          <tspan x="110" dy="16">トレーニング</tspan>
-        </text>
-              
-        <!-- 文法トレーニング -->
-        <!-- ふりがな -->
-        <text id="venn-grammar-furigana" x="290" y="78" text-anchor="middle" fill="white" font-size="10" font-weight="600" 
-              filter="url(#orangeTextShadow)" style="pointer-events: none; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 1px; opacity: 0.9; transition: font-size 0.1s ease;">
-          <tspan x="290" dy="0">ぶんぽう</tspan>
-        </text>
-        <text id="venn-grammar-text" x="290" y="95" text-anchor="middle" fill="white" font-size="16" font-weight="900" 
-              filter="url(#orangeTextShadow)" style="pointer-events: none; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 0.5px; transition: font-size 0.1s ease;">
-          <tspan x="290" dy="0">文法</tspan>
-          <tspan x="290" dy="16">トレーニング</tspan>
-        </text>
-              
-        <!-- 漢字・語彙トレーニング -->
-        <!-- ふりがな -->
-        <text id="venn-kanji-furigana" x="110" y="238" text-anchor="middle" fill="white" font-size="10" font-weight="600" 
-              filter="url(#purpleTextShadow)" style="pointer-events: none; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 1px; opacity: 0.9; transition: font-size 0.1s ease;">
-          <tspan x="110" dy="0">かんじ・ごい</tspan>
-        </text>
-        <text id="venn-kanji-text" x="110" y="255" text-anchor="middle" fill="white" font-size="16" font-weight="900" 
-              filter="url(#purpleTextShadow)" style="pointer-events: none; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 0.5px; transition: font-size 0.1s ease;">
-          <tspan x="110" dy="0">漢字・語彙</tspan>
-          <tspan x="110" dy="16">トレーニング</tspan>
-        </text>
-              
-        <!-- 論理トレーニング -->
-        <!-- ふりがな -->
-        <text id="venn-logic-furigana" x="290" y="238" text-anchor="middle" fill="white" font-size="10" font-weight="600" 
-              filter="url(#greenTextShadow)" style="pointer-events: none; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 1px; opacity: 0.9; transition: font-size 0.1s ease;">
-          <tspan x="290" dy="0">ろんり</tspan>
-        </text>
-        <text id="venn-logic-text" x="290" y="255" text-anchor="middle" fill="white" font-size="16" font-weight="900" 
-              filter="url(#greenTextShadow)" style="pointer-events: none; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 0.5px; transition: font-size 0.1s ease;">
-          <tspan x="290" dy="0">論理</tspan>
-          <tspan x="290" dy="16">トレーニング</tspan>
-        </text>
-      </svg>
+        .training-menu-btn {
+          position: relative;
+          padding: 24px 20px;
+          border: none;
+          border-radius: 16px;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+          font-weight: 700;
+          font-size: 16px;
+          color: white;
+          text-align: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          min-height: 120px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+        }
+        
+        .training-menu-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .training-menu-btn:active {
+          transform: translateY(0);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .training-menu-btn .furigana {
+          font-size: 12px;
+          font-weight: 400;
+          opacity: 0.9;
+          letter-spacing: 1px;
+        }
+        
+        .training-menu-btn .title {
+          font-size: 18px;
+          font-weight: 900;
+          line-height: 1.2;
+        }
+        
+        .reading-btn {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .grammar-btn {
+          background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%);
+        }
+        
+        .kanji-btn {
+          background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+        }
+        
+        .logic-btn {
+          background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+        }
+      </style>
+      
+      <div class="training-menu-grid">
+        <button class="training-menu-btn reading-btn" onclick="document.getElementById('goReadingTrainingBtn').click();">
+          <div class="furigana">おんどく</div>
+          <div class="title">音読<br>トレーニング</div>
+        </button>
+        
+        <button class="training-menu-btn grammar-btn" onclick="document.getElementById('goGrammarTrainingBtn').click();">
+          <div class="furigana">ぶんぽう</div>
+          <div class="title">文法<br>トレーニング</div>
+        </button>
+        
+        <button class="training-menu-btn kanji-btn" onclick="document.getElementById('goKanjiVocabBtn').click();">
+          <div class="furigana">かんじ・ごい</div>
+          <div class="title">漢字・語彙<br>トレーニング</div>
+        </button>
+        
+        <button class="training-menu-btn logic-btn" onclick="document.getElementById('goLogicBtn').click();">
+          <div class="furigana">ろんり</div>
+          <div class="title">論理<br>トレーニング</div>
+        </button>
+      </div>
     </div>
     
     <!-- 元のボタンは非表示にして機能を保持 -->
