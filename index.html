@@ -23832,6 +23832,10 @@ rt {
     const setupCircleTouchEvents = () => {
       const circles = document.querySelectorAll('circle[onclick]');
       circles.forEach(circle => {
+        // 元のonclick属性を保存
+        const originalOnclick = circle.getAttribute('onclick');
+        circle.dataset.originalOnclick = originalOnclick || '';
+        
         // タッチデバイスではmouseoverとmouseoutを削除
         circle.removeAttribute('onmouseover');
         circle.removeAttribute('onmouseout');
@@ -23849,47 +23853,117 @@ rt {
           e.preventDefault();
           e.stopPropagation();
           
-          // 対応するボタンを取得してクリック
           const circleId = circle.getAttribute('id');
           const buttonId = buttonMap[circleId];
+          console.log('=== Touch Event Debug ===');
           console.log('Circle touched:', circleId, '-> Button:', buttonId);
           
           if (buttonId) {
-            console.log('Handling touch for:', circleId, '-> Button:', buttonId);
-            
-            // ボタンのonclickイベントを直接実行
-            const button = document.getElementById(buttonId);
-            if (button && button.onclick) {
-              console.log('Executing button onclick:', buttonId);
-              button.onclick();
-            } else {
-              // フォールバック：IDで要素を取得して直接画面遷移
-              const boxMap = {
-                'goReadingTrainingBtn': 'readingTrainingBox',
-                'goGrammarTrainingBtn': 'grammarTrainingBox',
-                'goKanjiVocabBtn': 'kanjiVocabTrainingBox',
-                'goLogicBtn': 'logicTrainingBox'
-              };
+            try {
+              // 方法1: 保存されたonclick属性の内容を直接実行
+              const originalOnclick = circle.dataset.originalOnclick || circle.getAttribute('onclick');
+              console.log('Original onclick:', originalOnclick);
               
-              const boxId = boxMap[buttonId];
-              if (boxId) {
-                const box = document.getElementById(boxId);
-                if (box && window.showBox) {
-                  console.log('Direct showBox call:', boxId);
-                  window.showBox(box);
-                  
-                  // 対応するレンダリング関数を実行
-                  if (boxId === 'readingTrainingBox' && window.renderReadingTrainingMenu) {
-                    window.renderReadingTrainingMenu();
-                  } else if (boxId === 'grammarTrainingBox' && window.renderGrammarMenu) {
-                    window.renderGrammarMenu();
-                  } else if (boxId === 'kanjiVocabTrainingBox' && window.renderKanjiVocabMenu) {
-                    window.renderKanjiVocabMenu();
-                  } else if (boxId === 'logicTrainingBox' && window.renderLogicMenu) {
-                    window.renderLogicMenu();
-                  }
-                }
+              if (originalOnclick) {
+                console.log('Executing original onclick...');
+                eval(originalOnclick);
+                return;
               }
+              
+              // 方法2: ボタンのonclickイベントを実行
+              const button = document.getElementById(buttonId);
+              console.log('Button found:', !!button);
+              console.log('Button onclick:', !!button?.onclick);
+              
+              if (button && button.onclick) {
+                console.log('Executing button onclick:', buttonId);
+                button.onclick();
+                return;
+              }
+              
+              // 方法3: 直接画面遷移関数を呼び出し
+              console.log('Trying direct function calls...');
+              console.log('showBox function exists:', typeof window.showBox);
+              
+              switch (buttonId) {
+                                 case 'goReadingTrainingBtn':
+                   console.log('Calling reading training...');
+                   if (typeof window.goReadingTrainingBtn !== 'undefined' && window.goReadingTrainingBtn.onclick) {
+                     console.log('Using button onclick function');
+                     window.goReadingTrainingBtn.onclick();
+                   } else if (window.showBox && window.readingTrainingBox) {
+                     console.log('Using direct showBox call');
+                     window.showBox(window.readingTrainingBox);
+                     console.log('Called showBox for readingTrainingBox');
+                     if (window.renderReadingTrainingMenu) {
+                       window.renderReadingTrainingMenu();
+                       console.log('Called renderReadingTrainingMenu');
+                     }
+                   } else {
+                     console.error('Cannot navigate to reading training - missing functions or elements');
+                   }
+                   break;
+                  
+                                 case 'goGrammarTrainingBtn':
+                   console.log('Calling grammar training...');
+                   if (typeof window.goGrammarTrainingBtn !== 'undefined' && window.goGrammarTrainingBtn.onclick) {
+                     console.log('Using grammar button onclick function');
+                     window.goGrammarTrainingBtn.onclick();
+                   } else if (window.showBox && window.grammarTrainingBox) {
+                     console.log('Using direct showBox call for grammar');
+                     window.showBox(window.grammarTrainingBox);
+                     console.log('Called showBox for grammarTrainingBox');
+                     if (window.renderGrammarMenu) {
+                       window.renderGrammarMenu();
+                       console.log('Called renderGrammarMenu');
+                     }
+                   } else {
+                     console.error('Cannot navigate to grammar training - missing functions or elements');
+                   }
+                   break;
+                   
+                 case 'goKanjiVocabBtn':
+                   console.log('Calling kanji vocab training...');
+                   if (typeof window.goKanjiVocabBtn !== 'undefined' && window.goKanjiVocabBtn.onclick) {
+                     console.log('Using kanji vocab button onclick function');
+                     window.goKanjiVocabBtn.onclick();
+                   } else if (window.showBox && window.kanjiVocabTrainingBox) {
+                     console.log('Using direct showBox call for kanji vocab');
+                     window.showBox(window.kanjiVocabTrainingBox);
+                     console.log('Called showBox for kanjiVocabTrainingBox');
+                     if (window.renderKanjiVocabMenu) {
+                       window.renderKanjiVocabMenu();
+                       console.log('Called renderKanjiVocabMenu');
+                     }
+                   } else {
+                     console.error('Cannot navigate to kanji vocab training - missing functions or elements');
+                   }
+                   break;
+                   
+                 case 'goLogicBtn':
+                   console.log('Calling logic training...');
+                   const logicBtn = document.getElementById('goLogicBtn');
+                   if (logicBtn && logicBtn.onclick) {
+                     console.log('Using logic button onclick function');
+                     logicBtn.onclick();
+                   } else if (window.showBox && window.logicTrainingBox) {
+                     console.log('Using direct showBox call for logic');
+                     window.showBox(window.logicTrainingBox);
+                     console.log('Called showBox for logicTrainingBox');
+                     if (window.renderLogicMenu) {
+                       window.renderLogicMenu();
+                       console.log('Called renderLogicMenu');
+                     }
+                   } else {
+                     console.error('Cannot navigate to logic training - missing functions or elements');
+                   }
+                   break;
+              }
+              
+              console.log('Touch handling completed');
+              
+            } catch (error) {
+              console.error('Error in touch handler:', error);
             }
           }
         };
@@ -23911,19 +23985,25 @@ rt {
         circle.addEventListener('touchstart', (e) => {
           circle.setAttribute('r', '105');
           circle.setAttribute('stroke-width', '4');
-          // タッチスタート時にフラグを設定
-          circle.dataset.touchStarted = 'true';
+          // 重複実行を防ぐためのタイムスタンプ
+          circle.dataset.lastTouch = Date.now();
         });
         
         circle.addEventListener('touchend', (e) => {
           circle.setAttribute('r', '95');
           circle.setAttribute('stroke-width', '3');
           
-          // タッチエンドでも念のため処理を実行
-          if (circle.dataset.touchStarted === 'true') {
-            circle.dataset.touchStarted = 'false';
-            handleTouch(e);
+          // 短時間での重複実行を防ぐ
+          const lastTouch = parseInt(circle.dataset.lastTouch || '0');
+          const now = Date.now();
+          if (now - lastTouch < 500) {
+            console.log('Preventing duplicate touch execution');
+            return;
           }
+          circle.dataset.lastTouch = now;
+          
+          // タッチエンドで実際の処理を実行
+          handleTouch(e);
         });
       });
     };
@@ -23977,8 +24057,33 @@ rt {
       });
     };
     
+    // 隠しボタンをグローバルに設定
+    const setupGlobalButtons = () => {
+      window.goReadingTrainingBtn = document.getElementById('goReadingTrainingBtn');
+      window.goGrammarTrainingBtn = document.getElementById('goGrammarTrainingBtn');
+      window.goKanjiVocabBtn = document.getElementById('goKanjiVocabBtn');
+      window.goLogicBtn = document.getElementById('goLogicBtn');
+      
+      window.readingTrainingBox = document.getElementById('readingTrainingBox');
+      window.grammarTrainingBox = document.getElementById('grammarTrainingBox');
+      window.kanjiVocabTrainingBox = document.getElementById('kanjiVocabTrainingBox');
+      window.logicTrainingBox = document.getElementById('logicTrainingBox');
+      
+      console.log('Global buttons setup:', {
+        goReadingTrainingBtn: !!window.goReadingTrainingBtn,
+        goGrammarTrainingBtn: !!window.goGrammarTrainingBtn,
+        goKanjiVocabBtn: !!window.goKanjiVocabBtn,
+        goLogicBtn: !!window.goLogicBtn,
+        readingTrainingBox: !!window.readingTrainingBox,
+        grammarTrainingBox: !!window.grammarTrainingBox,
+        kanjiVocabTrainingBox: !!window.kanjiVocabTrainingBox,
+        logicTrainingBox: !!window.logicTrainingBox
+      });
+    };
+    
     // 初期セットアップ（複数回実行して確実に設定）
     const setupAllTouchEvents = () => {
+      setupGlobalButtons();
       setupCircleTouchEvents();
       setupButtonTouchEvents();
       setupTouchForDynamicElements();
@@ -24022,6 +24127,32 @@ rt {
   }
   
   console.log('iPadタッチイベント対応の初期化が完了しました');
+  
+  // ページ読み込み完了時に関数の存在を確認
+  window.addEventListener('load', () => {
+    console.log('=== Page Load Complete - Function Check ===');
+    console.log('showBox function:', typeof window.showBox);
+    console.log('renderReadingTrainingMenu:', typeof window.renderReadingTrainingMenu);
+    console.log('renderGrammarMenu:', typeof window.renderGrammarMenu);
+    console.log('renderKanjiVocabMenu:', typeof window.renderKanjiVocabMenu);
+    console.log('renderLogicMenu:', typeof window.renderLogicMenu);
+    
+    // 隠しボタンの存在確認
+    console.log('Hidden buttons exist:', {
+      goReadingTrainingBtn: !!document.getElementById('goReadingTrainingBtn'),
+      goGrammarTrainingBtn: !!document.getElementById('goGrammarTrainingBtn'),
+      goKanjiVocabBtn: !!document.getElementById('goKanjiVocabBtn'),
+      goLogicBtn: !!document.getElementById('goLogicBtn')
+    });
+    
+    // ボックス要素の存在確認
+    console.log('Box elements exist:', {
+      readingTrainingBox: !!document.getElementById('readingTrainingBox'),
+      grammarTrainingBox: !!document.getElementById('grammarTrainingBox'),
+      kanjiVocabTrainingBox: !!document.getElementById('kanjiVocabTrainingBox'),
+      logicTrainingBox: !!document.getElementById('logicTrainingBox')
+    });
+  });
   
   </script>
  </html>
