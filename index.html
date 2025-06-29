@@ -12,6 +12,26 @@ html, body {
   height: 100%;
   font-family: "Meiryo", sans-serif;
   background: #fefefe;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* グローバルタッチ対応 */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* タッチデバイス用のホバー状態の無効化 */
+@media (hover: none) and (pointer: coarse) {
+  button:hover,
+  .kanji-choice:hover,
+  .start-btn:hover,
+  .small-btn:hover,
+  .audio-btn:hover,
+  .buy-btn:hover {
+    transform: none !important;
+  }
 }
 
 /* ダイヤモンド画像スタイル */
@@ -72,9 +92,18 @@ button {
   border: none;
   font-weight: bold;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 button:hover {
   background: #2f74b5;
+}
+button:active {
+  background: #2f74b5;
+  transform: scale(0.98);
 }
 /* --- ダッシュボード --- */
 .dashboard {
@@ -23787,8 +23816,126 @@ rt {
   // 定期的にもチェック
   setInterval(fixTreasureCardLayout, 2000);
 
-
-
+  // === iPadタッチイベント対応 ===
+  console.log('iPadタッチイベント対応を初期化');
+  
+  // タッチデバイスかどうかを判定
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
+  if (isTouchDevice) {
+    console.log('タッチデバイスを検出しました');
+    
+    // 全体的なタッチイベント最適化
+    document.addEventListener('touchstart', function() {}, {passive: true});
+    
+    // SVGサークル要素のタッチイベント対応
+    const setupCircleTouchEvents = () => {
+      const circles = document.querySelectorAll('circle[onclick]');
+      circles.forEach(circle => {
+        // 既存のonclickハンドラーを保存
+        const originalOnClick = circle.getAttribute('onclick');
+        
+        // タッチイベントハンドラーを追加
+        circle.addEventListener('touchstart', function(e) {
+          e.preventDefault(); // ダブルタップズームを防ぐ
+          // オリジナルのonclickを実行
+          if (originalOnClick) {
+            eval(originalOnClick);
+          }
+        }, {passive: false});
+        
+        // CSSでタッチフィードバックを改善
+        circle.style.setProperty('-webkit-tap-highlight-color', 'transparent');
+        circle.style.setProperty('touch-action', 'manipulation');
+      });
+    };
+    
+    // 全てのボタンにタッチイベント対応を追加
+    const setupButtonTouchEvents = () => {
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        // タッチイベント最適化のCSSを追加
+        button.style.setProperty('-webkit-tap-highlight-color', 'transparent');
+        button.style.setProperty('touch-action', 'manipulation');
+        button.style.setProperty('-webkit-touch-callout', 'none');
+        button.style.setProperty('-webkit-user-select', 'none');
+        button.style.setProperty('user-select', 'none');
+        
+        // onclickがある場合はtouchstartも追加
+        if (button.onclick || button.hasAttribute('onclick')) {
+          let isHandling = false;
+          button.addEventListener('touchstart', function(e) {
+            if (!isHandling) {
+              isHandling = true;
+              e.preventDefault();
+              // クリックイベントを発火
+              this.click();
+              setTimeout(() => { isHandling = false; }, 300);
+            }
+          }, {passive: false});
+        }
+      });
+    };
+    
+    // 動的に追加される要素にも対応
+    const setupTouchForDynamicElements = () => {
+      // ボタンとSVGサークルの再セットアップ
+      setupCircleTouchEvents();
+      setupButtonTouchEvents();
+      
+      // 特定のクラスを持つ要素にもタッチイベントを追加
+      const touchableElements = document.querySelectorAll('.kanji-choice, .start-btn, .small-btn, .audio-btn, .buy-btn, .logic-check-btn, .logic-reset-btn');
+      touchableElements.forEach(element => {
+        element.style.setProperty('-webkit-tap-highlight-color', 'transparent');
+        element.style.setProperty('touch-action', 'manipulation');
+        
+        if (!element.hasAttribute('data-touch-enabled')) {
+          element.setAttribute('data-touch-enabled', 'true');
+          element.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            this.click();
+          }, {passive: false});
+        }
+      });
+    };
+    
+    // 初期セットアップ
+    setTimeout(() => {
+      setupCircleTouchEvents();
+      setupButtonTouchEvents();
+      setupTouchForDynamicElements();
+    }, 100);
+    
+    // DOMの変更を監視して動的要素にも対応
+    const touchObserver = new MutationObserver(() => {
+      setupTouchForDynamicElements();
+    });
+    
+    touchObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    
+    // iOS Safari用の追加最適化
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+      console.log('iOS端末を検出しました - 追加最適化を適用');
+      
+      // ビューポートのスケーリングを防ぐ
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function(event) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, false);
+      
+      // スクロール時のバウンス効果を制御
+      document.body.style.webkitOverflowScrolling = 'touch';
+    }
+  }
+  
+  console.log('iPadタッチイベント対応の初期化が完了しました');
   
   </script>
  </html>
