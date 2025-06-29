@@ -1,0 +1,373 @@
+{
+  "title": "主語・述語の問題",
+  "description": "まず述語をタップし、次に主語をタップしてください。述語は青色、主語は赤色になります。",
+  "problems": [
+    {
+      "id": 1,
+      "level": "intro-1",
+      "sentence": "犬が走る。",
+      "words": [
+        {"text": "犬が", "type": "subject", "position": 0},
+        {"text": "走る", "type": "predicate", "position": 1}
+      ],
+      "correct_predicate": 1,
+      "correct_subject": 0,
+      "explanation": "「走る」が述語（動作）で、「犬が」が主語（だれが）です。",
+      "hint": "だれが何をするかを考えてみましょう。"
+    },
+    {
+      "id": 2,
+      "level": "intro-1",
+      "sentence": "花がきれいだ。",
+      "words": [
+        {"text": "花が", "type": "subject", "position": 0},
+        {"text": "きれいだ", "type": "predicate", "position": 1}
+      ],
+      "correct_predicate": 1,
+      "correct_subject": 0,
+      "explanation": "「きれいだ」が述語（様子）で、「花が」が主語（何が）です。",
+      "hint": "何がどんな様子かを見つけましょう。"
+    },
+    {
+      "id": 3,
+      "level": "intro-1",
+      "sentence": "ここに本がある。",
+      "words": [
+        {"text": "ここに", "type": "place", "position": 0},
+        {"text": "本が", "type": "subject", "position": 1},
+        {"text": "ある", "type": "predicate", "position": 2}
+      ],
+      "correct_predicate": 2,
+      "correct_subject": 1,
+      "explanation": "「ある」が述語（存在）で、「本が」が主語（何が）です。",
+      "hint": "何があるかを考えてみましょう。"
+    },
+    {
+      "id": "intro-2",
+      "level": "intro",
+      "type": "matching",
+      "title": "主語・述語のパターンを線でつなごう",
+      "description": "左の文と右のパターンを線でつないでください。",
+      "sentences": [
+        {"id": 1, "text": "あの花はとてもきれいだ。"},
+        {"id": 2, "text": "わたしはプールで泳ぐ。"},
+        {"id": 3, "text": "この人は医者だ。"},
+        {"id": 4, "text": "ここに金庫がある。"}
+      ],
+      "patterns": [
+        {"id": "A", "text": "だれが（何が）｜どうする"},
+        {"id": "B", "text": "だれが（何が）｜何だ"},
+        {"id": "C", "text": "だれが（何が）｜どんなだ"},
+        {"id": "D", "text": "だれが（何が）｜ある・いる・ない"}
+      ],
+      "correct_matches": [
+        {"sentence": 1, "pattern": "C"},
+        {"sentence": 2, "pattern": "A"},
+        {"sentence": 3, "pattern": "B"},
+        {"sentence": 4, "pattern": "D"}
+      ],
+      "explanations": [
+        {"sentence": 1, "explanation": "「あの花はとてもきれいだ」は、花の様子を表すので「だれが（何が）—どんなだ」のパターンです。"},
+        {"sentence": 2, "explanation": "「わたしはプールで泳ぐ」は、動作を表すので「だれが（何が）—どうする」のパターンです。"},
+        {"sentence": 3, "explanation": "「この人は医者だ」は、職業（何であるか）を表すので「だれが（何が）—何だ」のパターンです。"},
+        {"sentence": 4, "explanation": "「ここに金庫がある」は、存在を表すので「だれが（何が）—ある・いる・ない」のパターンです。"}
+      ]
+    },
+    {
+      "id": 1,
+      "level": "basic",
+      "sentence": "桜の花が美しく咲いている。",
+      "words": [
+        {"text": "桜の", "type": "modifier", "position": 0},
+        {"text": "花が", "type": "subject", "position": 1},
+        {"text": "美しく", "type": "adverb", "position": 2},
+        {"text": "咲いている", "type": "predicate", "position": 3}
+      ],
+      "correct_predicate": 3,
+      "correct_subject": 1,
+      "explanation": "「咲いている」が述語（動作を表す）で、「花が」が主語（何が〜する）です。",
+      "hint": "何が何をしているかを考えてみましょう。"
+    },
+    {
+      "id": 2,
+      "level": "basic",
+      "sentence": "子どもたちが公園で元気に遊んでいる。",
+      "words": [
+        {"text": "子どもたちが", "type": "subject", "position": 0},
+        {"text": "公園で", "type": "place", "position": 1},
+        {"text": "元気に", "type": "adverb", "position": 2},
+        {"text": "遊んでいる", "type": "predicate", "position": 3}
+      ],
+      "correct_predicate": 3,
+      "correct_subject": 0,
+      "explanation": "「遊んでいる」が述語で、「子どもたちが」が主語です。",
+      "hint": "誰が何をしているかを見つけましょう。"
+    },
+    {
+      "id": 3,
+      "level": "basic",
+      "sentence": "お母さんが美味しい料理を作ってくれた。",
+      "words": [
+        {"text": "お母さんが", "type": "subject", "position": 0},
+        {"text": "美味しい", "type": "modifier", "position": 1},
+        {"text": "料理を", "type": "object", "position": 2},
+        {"text": "作ってくれた", "type": "predicate", "position": 3}
+      ],
+      "correct_predicate": 3,
+      "correct_subject": 0,
+      "explanation": "「作ってくれた」が述語で、「お母さんが」が主語です。",
+      "hint": "誰が何をしたかを考えてみましょう。"
+    },
+    {
+      "id": 4,
+      "level": "basic",
+      "sentence": "大きな犬が庭で走っている。",
+      "words": [
+        {"text": "大きな", "type": "modifier", "position": 0},
+        {"text": "犬が", "type": "subject", "position": 1},
+        {"text": "庭で", "type": "place", "position": 2},
+        {"text": "走っている", "type": "predicate", "position": 3}
+      ],
+      "correct_predicate": 3,
+      "correct_subject": 1,
+      "explanation": "「走っている」が述語で、「犬が」が主語です。",
+      "hint": "何がどうしているかを見つけましょう。"
+    },
+    {
+      "id": 5,
+      "level": "basic",
+      "sentence": "友達が図書館で本を読んでいる。",
+      "words": [
+        {"text": "友達が", "type": "subject", "position": 0},
+        {"text": "図書館で", "type": "place", "position": 1},
+        {"text": "本を", "type": "object", "position": 2},
+        {"text": "読んでいる", "type": "predicate", "position": 3}
+      ],
+      "correct_predicate": 3,
+      "correct_subject": 0,
+      "explanation": "「読んでいる」が述語で、「友達が」が主語です。",
+      "hint": "誰が何をしているかを探してみましょう。"
+    },
+    {
+      "id": 6,
+      "level": "advanced",
+      "sentence": "昨日の夕方、近所の公園で友達と一緒にサッカーをして遊んでいた小学生の田中君が、突然大きな声で母親を呼んでいた。",
+      "words": [
+        {"text": "昨日の", "type": "modifier", "position": 0},
+        {"text": "夕方、", "type": "time", "position": 1},
+        {"text": "近所の", "type": "modifier", "position": 2},
+        {"text": "公園で", "type": "place", "position": 3},
+        {"text": "友達と", "type": "modifier", "position": 4},
+        {"text": "一緒に", "type": "adverb", "position": 5},
+        {"text": "サッカーを", "type": "object", "position": 6},
+        {"text": "して", "type": "verb", "position": 7},
+        {"text": "遊んでいた", "type": "modifier", "position": 8},
+        {"text": "小学生の", "type": "modifier", "position": 9},
+        {"text": "田中君が、", "type": "subject", "position": 10},
+        {"text": "突然", "type": "adverb", "position": 11},
+        {"text": "大きな", "type": "modifier", "position": 12},
+        {"text": "声で", "type": "method", "position": 13},
+        {"text": "母親を", "type": "object", "position": 14},
+        {"text": "呼んでいた", "type": "predicate", "position": 15}
+      ],
+      "correct_predicate": 15,
+      "correct_subject": 10,
+      "explanation": "「呼んでいた」が述語で、「田中君が」が主語です。長い修飾語に惑わされないように注意しましょう。",
+      "hint": "誰が何をしていたかを見つけましょう。長い修飾語がついていても、主語と述語の関係は変わりません。"
+    },
+    {
+      "id": 7,
+      "level": "advanced",
+      "sentence": "美しい音色で多くの人々を魅了してきた世界的に有名なピアニストが、今夜のコンサートホールで素晴らしい演奏を披露している。",
+      "words": [
+        {"text": "美しい", "type": "modifier", "position": 0},
+        {"text": "音色で", "type": "method", "position": 1},
+        {"text": "多くの", "type": "modifier", "position": 2},
+        {"text": "人々を", "type": "object", "position": 3},
+        {"text": "魅了してきた", "type": "modifier", "position": 4},
+        {"text": "世界的に", "type": "adverb", "position": 5},
+        {"text": "有名な", "type": "modifier", "position": 6},
+        {"text": "ピアニストが、", "type": "subject", "position": 7},
+        {"text": "今夜の", "type": "modifier", "position": 8},
+        {"text": "コンサートホールで", "type": "place", "position": 9},
+        {"text": "素晴らしい", "type": "modifier", "position": 10},
+        {"text": "演奏を", "type": "object", "position": 11},
+        {"text": "披露している", "type": "predicate", "position": 12}
+      ],
+      "correct_predicate": 12,
+      "correct_subject": 7,
+      "explanation": "「披露している」が述語で、「ピアニストが」が主語です。複雑な修飾語句があっても、基本的な主語・述語の関係を見つけることが大切です。",
+      "hint": "誰が何をしているかを考えましょう。長い修飾語があっても、動作をしている人を探してください。"
+    },
+    {
+      "id": 8,
+      "level": "advanced",
+      "sentence": "朝早くから夜遅くまで一生懸命働いているお父さんが、家族のために新しい家を建てることを決めた。",
+      "words": [
+        {"text": "朝早くから", "type": "time", "position": 0},
+        {"text": "夜遅くまで", "type": "time", "position": 1},
+        {"text": "一生懸命", "type": "adverb", "position": 2},
+        {"text": "働いている", "type": "modifier", "position": 3},
+        {"text": "お父さんが、", "type": "subject", "position": 4},
+        {"text": "家族のために", "type": "purpose", "position": 5},
+        {"text": "新しい", "type": "modifier", "position": 6},
+        {"text": "家を", "type": "object", "position": 7},
+        {"text": "建てることを", "type": "object", "position": 8},
+        {"text": "決めた", "type": "predicate", "position": 9}
+      ],
+      "correct_predicate": 9,
+      "correct_subject": 4,
+      "explanation": "「決めた」が述語で、「お父さんが」が主語です。「働いている」は「お父さん」を修飾する連体修飾語です。",
+      "hint": "最終的に誰が何をしたかを考えましょう。修飾語の動詞に惑わされないように注意してください。"
+    },
+    {
+      "id": 9,
+      "level": "advanced",
+      "sentence": "雨上がりの美しい虹を見て感動した多くの観光客が、記念写真を撮るために急いでカメラを取り出している。",
+      "words": [
+        {"text": "雨上がりの", "type": "modifier", "position": 0},
+        {"text": "美しい", "type": "modifier", "position": 1},
+        {"text": "虹を", "type": "object", "position": 2},
+        {"text": "見て", "type": "verb", "position": 3},
+        {"text": "感動した", "type": "modifier", "position": 4},
+        {"text": "多くの", "type": "modifier", "position": 5},
+        {"text": "観光客が、", "type": "subject", "position": 6},
+        {"text": "記念写真を", "type": "object", "position": 7},
+        {"text": "撮るために", "type": "purpose", "position": 8},
+        {"text": "急いで", "type": "adverb", "position": 9},
+        {"text": "カメラを", "type": "object", "position": 10},
+        {"text": "取り出している", "type": "predicate", "position": 11}
+      ],
+      "correct_predicate": 11,
+      "correct_subject": 6,
+      "explanation": "「取り出している」が述語で、「観光客が」が主語です。「見て感動した」は「観光客」を修飾する連体修飾句です。",
+      "hint": "今現在、誰が何をしているかを考えましょう。過去の出来事は修飾語として使われています。"
+    },
+    {
+      "id": 10,
+      "level": "advanced",
+      "sentence": "毎朝早起きして新聞を配達している中学生の山田さんが、今日は風邪をひいて学校を休んでいる。",
+      "words": [
+        {"text": "毎朝", "type": "time", "position": 0},
+        {"text": "早起きして", "type": "verb", "position": 1},
+        {"text": "新聞を", "type": "object", "position": 2},
+        {"text": "配達している", "type": "modifier", "position": 3},
+        {"text": "中学生の", "type": "modifier", "position": 4},
+        {"text": "山田さんが、", "type": "subject", "position": 5},
+        {"text": "今日は", "type": "time", "position": 6},
+        {"text": "風邪を", "type": "object", "position": 7},
+        {"text": "ひいて", "type": "verb", "position": 8},
+        {"text": "学校を", "type": "object", "position": 9},
+        {"text": "休んでいる", "type": "predicate", "position": 10}
+      ],
+      "correct_predicate": 10,
+      "correct_subject": 5,
+      "explanation": "「休んでいる」が述語で、「山田さんが」が主語です。「配達している」は「山田さん」を修飾する連体修飾語です。",
+      "hint": "今日の状況について、誰が何をしているかを見つけましょう。普段の行動は修飾語として使われています。"
+    },
+    {
+      "id": "exam-1",
+      "level": "exam",
+      "sentence": "古典文学の研究において画期的な発見をした大学教授が、国際学会で革新的な理論を発表することになった。",
+      "words": [
+        {"text": "古典文学の", "type": "modifier", "position": 0},
+        {"text": "研究において", "type": "place", "position": 1},
+        {"text": "画期的な", "type": "modifier", "position": 2},
+        {"text": "発見を", "type": "object", "position": 3},
+        {"text": "した", "type": "modifier", "position": 4},
+        {"text": "大学教授が、", "type": "subject", "position": 5},
+        {"text": "国際学会で", "type": "place", "position": 6},
+        {"text": "革新的な", "type": "modifier", "position": 7},
+        {"text": "理論を", "type": "object", "position": 8},
+        {"text": "発表することに", "type": "verb", "position": 9},
+        {"text": "なった", "type": "predicate", "position": 10}
+      ],
+      "correct_predicate": 10,
+      "correct_subject": 5,
+      "explanation": "「なった」が述語で、「大学教授が」が主語です。「した」は「大学教授」を修飾する連体修飾語句の一部です。",
+      "hint": "最終的に誰がどのような状況になったかを考えましょう。過去の業績は修飾語として使われています。"
+    },
+    {
+      "id": "exam-2",
+      "level": "exam", 
+      "sentence": "環境問題に深い関心を持ち、持続可能な社会の実現を目指して活動している若い研究者たちが、新しい技術の開発に成功している。",
+      "words": [
+        {"text": "環境問題に", "type": "object", "position": 0},
+        {"text": "深い", "type": "modifier", "position": 1},
+        {"text": "関心を", "type": "object", "position": 2},
+        {"text": "持ち、", "type": "verb", "position": 3},
+        {"text": "持続可能な", "type": "modifier", "position": 4},
+        {"text": "社会の", "type": "modifier", "position": 5},
+        {"text": "実現を", "type": "object", "position": 6},
+        {"text": "目指して", "type": "verb", "position": 7},
+        {"text": "活動している", "type": "modifier", "position": 8},
+        {"text": "若い", "type": "modifier", "position": 9},
+        {"text": "研究者たちが、", "type": "subject", "position": 10},
+        {"text": "新しい", "type": "modifier", "position": 11},
+        {"text": "技術の", "type": "modifier", "position": 12},
+        {"text": "開発に", "type": "object", "position": 13},
+        {"text": "成功している", "type": "predicate", "position": 14}
+      ],
+      "correct_predicate": 14,
+      "correct_subject": 10,
+      "explanation": "「成功している」が述語で、「研究者たちが」が主語です。文頭の長い修飾句は全て「研究者たち」を説明しています。",
+      "hint": "現在、誰が何に成功しているかを見つけましょう。長い修飾句に惑わされないよう注意してください。"
+    },
+    {
+      "id": "exam-3",
+      "level": "exam",
+      "sentence": "伝統的な製法を守りながらも、現代の技術を巧みに取り入れ、世界中の人々に愛される商品を作り続けている老舗企業の職人が、次世代への技術継承に力を注いでいる。",
+      "words": [
+        {"text": "伝統的な", "type": "modifier", "position": 0},
+        {"text": "製法を", "type": "object", "position": 1},
+        {"text": "守りながらも、", "type": "verb", "position": 2},
+        {"text": "現代の", "type": "modifier", "position": 3},
+        {"text": "技術を", "type": "object", "position": 4},
+        {"text": "巧みに", "type": "adverb", "position": 5},
+        {"text": "取り入れ、", "type": "verb", "position": 6},
+        {"text": "世界中の", "type": "modifier", "position": 7},
+        {"text": "人々に", "type": "object", "position": 8},
+        {"text": "愛される", "type": "modifier", "position": 9},
+        {"text": "商品を", "type": "object", "position": 10},
+        {"text": "作り続けている", "type": "modifier", "position": 11},
+        {"text": "老舗企業の", "type": "modifier", "position": 12},
+        {"text": "職人が、", "type": "subject", "position": 13},
+        {"text": "次世代への", "type": "modifier", "position": 14},
+        {"text": "技術継承に", "type": "object", "position": 15},
+        {"text": "力を", "type": "object", "position": 16},
+        {"text": "注いでいる", "type": "predicate", "position": 17}
+      ],
+      "correct_predicate": 17,
+      "correct_subject": 13,
+      "explanation": "「注いでいる」が述語で、「職人が」が主語です。文の前半部分は全て「職人」の特徴を表す連体修飾句です。",
+      "hint": "現在、職人が何をしているかを見つけましょう。複雑な修飾構造の中から主要な動作を探してください。"
+    },
+    {
+      "id": "exam-4",
+      "level": "exam",
+      "sentence": "多様な文化的背景を持つ学生たちが集まり、互いの違いを尊重しながら共に学び合う国際的な教育環境において、真の国際理解が育まれている。",
+      "words": [
+        {"text": "多様な", "type": "modifier", "position": 0},
+        {"text": "文化的", "type": "modifier", "position": 1},
+        {"text": "背景を", "type": "object", "position": 2},
+        {"text": "持つ", "type": "modifier", "position": 3},
+        {"text": "学生たちが", "type": "subject", "position": 4},
+        {"text": "集まり、", "type": "verb", "position": 5},
+        {"text": "互いの", "type": "modifier", "position": 6},
+        {"text": "違いを", "type": "object", "position": 7},
+        {"text": "尊重しながら", "type": "verb", "position": 8},
+        {"text": "共に", "type": "adverb", "position": 9},
+        {"text": "学び合う", "type": "modifier", "position": 10},
+        {"text": "国際的な", "type": "modifier", "position": 11},
+        {"text": "教育環境において、", "type": "place", "position": 12},
+        {"text": "真の", "type": "modifier", "position": 13},
+        {"text": "国際理解が", "type": "subject", "position": 14},
+        {"text": "育まれている", "type": "predicate", "position": 15}
+      ],
+      "correct_predicate": 15,
+      "correct_subject": 14,
+      "explanation": "「育まれている」が述語で、「国際理解が」が主語です。この文は複雑な構造で、前半の説明が環境を表し、後半で本当の主語・述語が現れます。",
+      "hint": "この教育環境の中で、何が育まれているかを考えましょう。主語が文の後半に現れる構造に注意してください。"
+    }
+  ]
+} 

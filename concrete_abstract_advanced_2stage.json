@@ -1,0 +1,118 @@
+{
+  "title": "具体と抽象 発展編（2段階）",
+  "level": "発展",
+  "description": "文章を読んで、2段階の具体と抽象の図を完成させよう",
+  "instruction": "文章を読んで、4つの具体例を本文から抜き出し、それらを2つのグループに分けて中間概念を考え、全体をまとめる抽象概念を入力して、7つの空欄をすべて埋めてください。",
+  "problems": [
+    {
+      "id": 1,
+      "text": "海にはまぐろやたいが泳いでいる。川や池にはこいやどじょうが住んでいる。これらはすべて水の中で暮らす生き物である。",
+      "input_fields": {
+        "abstract_answer": "",
+        "middle_concept_1": "",
+        "middle_concept_2": "",
+        "concrete_1": "",
+        "concrete_2": "",
+        "concrete_3": "",
+        "concrete_4": ""
+      },
+      "correct_answers": {
+        "abstract_answer": "魚",
+        "middle_concept_1": "海水魚",
+        "middle_concept_2": "淡水魚",
+        "concrete_group_1": ["まぐろ", "たい"],
+        "concrete_group_2": ["こい", "どじょう"]
+      },
+      "hint": "水の中で暮らす生き物をまとめた言葉は何でしょう？海に住むものと川に住むものに分けて考えてみましょう。",
+      "diagram_instruction": "最上段に抽象概念（1個）、中段に2つのグループ名、最下段に4つの具体例を入力してください"
+    },
+    {
+      "id": 2,
+      "text": "公園ではサッカーや野球をする人たちがいる。体育館ではバスケットボールやバレーボールの試合が行われている。これらはすべてチームで行う競技である。",
+      "input_fields": {
+        "abstract_answer": "",
+        "middle_concept_1": "",
+        "middle_concept_2": "",
+        "concrete_1": "",
+        "concrete_2": "",
+        "concrete_3": "",
+        "concrete_4": ""
+      },
+      "correct_answers": {
+        "abstract_answer": "スポーツ",
+        "middle_concept_1": "屋外スポーツ",
+        "middle_concept_2": "屋内スポーツ",
+        "concrete_group_1": ["サッカー", "野球"],
+        "concrete_group_2": ["バスケットボール", "バレーボール"]
+      },
+      "hint": "体を動かして競い合う活動をまとめた言葉は何でしょう？どこで行うかに注目して分けてみましょう。",
+      "diagram_instruction": "最上段に抽象概念（1個）、中段に2つのグループ名、最下段に4つの具体例を入力してください"
+    },
+    {
+      "id": 3,
+      "text": "春には桜やつつじの花が咲く。夏にはひまわりや朝顔が美しく咲いている。これらはすべて季節によって咲く時期が決まっている植物である。",
+      "input_fields": {
+        "abstract_answer": "",
+        "middle_concept_1": "",
+        "middle_concept_2": "",
+        "concrete_1": "",
+        "concrete_2": "",
+        "concrete_3": "",
+        "concrete_4": ""
+      },
+      "correct_answers": {
+        "abstract_answer": "花",
+        "middle_concept_1": "春の花",
+        "middle_concept_2": "夏の花",
+        "concrete_group_1": ["桜", "つつじ"],
+        "concrete_group_2": ["ひまわり", "朝顔"]
+      },
+      "hint": "美しく咲く植物をまとめた言葉は何でしょう？いつ咲くかに注目して分けてみましょう。",
+      "diagram_instruction": "最上段に抽象概念（1個）、中段に2つのグループ名、最下段に4つの具体例を入力してください"
+    },
+    {
+      "id": 4,
+      "text": "朝食にはパンやご飯を食べる。夕食にはうどんやそばをいただく。これらはすべて私たちの主食となる食べ物である。",
+      "input_fields": {
+        "abstract_answer": "",
+        "middle_concept_1": "",
+        "middle_concept_2": "",
+        "concrete_1": "",
+        "concrete_2": "",
+        "concrete_3": "",
+        "concrete_4": ""
+      },
+      "correct_answers": {
+        "abstract_answer": "主食",
+        "middle_concept_1": "ご飯・パン類",
+        "middle_concept_2": "麺類",
+        "concrete_group_1": ["パン", "ご飯"],
+        "concrete_group_2": ["うどん", "そば"]
+      },
+      "hint": "お腹を満たす基本的な食べ物をまとめた言葉は何でしょう？形や作り方に注目して分けてみましょう。",
+      "diagram_instruction": "最上段に抽象概念（1個）、中段に2つのグループ名、最下段に4つの具体例を入力してください"
+    },
+    {
+      "id": 5,
+      "text": "図書館では小説や詩集を読むことができる。学校では教科書や辞典を使って勉強する。これらはすべて知識や情報が書かれたものである。",
+      "input_fields": {
+        "abstract_answer": "",
+        "middle_concept_1": "",
+        "middle_concept_2": "",
+        "concrete_1": "",
+        "concrete_2": "",
+        "concrete_3": "",
+        "concrete_4": ""
+      },
+      "correct_answers": {
+        "abstract_answer": "本",
+        "middle_concept_1": "娯楽の本",
+        "middle_concept_2": "勉強の本",
+        "concrete_group_1": ["小説", "詩集"],
+        "concrete_group_2": ["教科書", "辞典"]
+      },
+      "hint": "文字が書かれた冊子をまとめた言葉は何でしょう？何のために読むかに注目して分けてみましょう。",
+      "diagram_instruction": "最上段に抽象概念（1個）、中段に2つのグループ名、最下段に4つの具体例を入力してください"
+    }
+  ]
+} 

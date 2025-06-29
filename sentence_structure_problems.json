@@ -1,0 +1,253 @@
+{
+  "title": "文の構造 - 文節配置問題",
+  "description": "文を文節に分けて、図の中に配置してください。太い枠線には主語と述語を、その他の枠には修飾語を入れます。",
+  "problems": [
+    {
+      "id": "intro-1",
+      "level": "intro",
+      "sentence": "白い車は急に動き出した。",
+      "image": "3clause_p.JPG",
+      "bunsetsu": ["白い", "車は", "急に", "動き出した"],
+      "structure": {
+        "type": "simple",
+        "subject_position": 1,
+        "predicate_position": 1,
+        "modifiers": [
+          {"position": 0, "modifies": "subject", "type": "連体修飾語"},
+          {"position": 0, "modifies": "predicate", "type": "連用修飾語"}
+        ]
+      },
+      "correct_placement": {
+        "subject": "車は",
+        "predicate": "動き出した",
+        "modifier1": "白い",
+        "modifier2": "急に"
+      },
+      "explanation": "「車は」が主語、「動き出した」が述語です。「白い」は「車」を修飾し、「急に」は「動き出した」を修飾します。",
+      "hint": "まず「何が・どうした」を見つけて、太い枠に入れましょう。"
+    },
+    {
+      "id": "intro-2",
+      "level": "intro",
+      "sentence": "赤いりんごがテーブルの上にある。",
+      "image": "3clause_s.JPG",
+      "bunsetsu": ["赤い", "りんごが", "テーブルの", "上に", "ある"],
+      "structure": {
+        "type": "simple",
+        "subject_position": 1,
+        "predicate_position": 1,
+        "modifiers": [
+          {"position": 0, "modifies": "subject", "type": "連体修飾語"},
+          {"position": 0, "modifies": "predicate", "type": "連用修飾語"},
+          {"position": 1, "modifies": "predicate", "type": "連用修飾語"}
+        ]
+      },
+      "correct_placement": {
+        "subject": "りんごが",
+        "predicate": "ある",
+        "modifier1": "赤い",
+        "modifier2": "テーブルの",
+        "modifier3": "上に"
+      },
+      "explanation": "「りんごが」が主語、「ある」が述語です。「赤い」は「りんご」を、「テーブルの上に」は「ある」を修飾します。",
+      "hint": "場所を表す言葉は述語を修飾することが多いです。"
+    },
+    {
+      "id": "basic-1",
+      "level": "basic",
+      "sentence": "小さな子どもたちが公園で楽しそうに遊んでいる。",
+      "image": "4clause.JPG",
+      "bunsetsu": ["小さな", "子どもたちが", "公園で", "楽しそうに", "遊んでいる"],
+      "structure": {
+        "type": "simple",
+        "subject_position": 1,
+        "predicate_position": 1,
+        "modifiers": [
+          {"position": 0, "modifies": "subject", "type": "連体修飾語"},
+          {"position": 0, "modifies": "predicate", "type": "連用修飾語"},
+          {"position": 1, "modifies": "predicate", "type": "連用修飾語"}
+        ]
+      },
+      "correct_placement": {
+        "subject": "子どもたちが",
+        "predicate": "遊んでいる",
+        "modifier1": "小さな",
+        "modifier2": "公園で",
+        "modifier3": "楽しそうに"
+      },
+      "explanation": "「子どもたちが」が主語、「遊んでいる」が述語。「小さな」は主語を、「公園で」「楽しそうに」は述語を修飾します。",
+      "hint": "場所や様子を表す言葉は述語にかかることが多いです。"
+    },
+    {
+      "id": "basic-2",
+      "level": "basic",
+      "sentence": "昨日買った本をお兄さんが熱心に読んでいる。",
+      "image": "7cluase.JPG",
+      "bunsetsu": ["昨日", "買った", "本を", "お兄さんが", "熱心に", "読んでいる"],
+      "structure": {
+        "type": "simple",
+        "subject_position": 1,
+        "predicate_position": 1,
+        "modifiers": [
+          {"position": 0, "modifies": "object", "type": "連体修飾語"},
+          {"position": 1, "modifies": "object", "type": "連体修飾語"},
+          {"position": 0, "modifies": "predicate", "type": "連用修飾語"}
+        ]
+      },
+      "correct_placement": {
+        "subject": "お兄さんが",
+        "predicate": "読んでいる",
+        "modifier1": "昨日",
+        "modifier2": "買った",
+        "modifier3": "本を",
+        "modifier4": "熱心に"
+      },
+      "explanation": "「お兄さんが」が主語、「読んでいる」が述語。「昨日買った」は「本」を、「熱心に」は「読んでいる」を修飾します。",
+      "hint": "「昨日買った」のような連体修飾句は、後ろの名詞を詳しく説明します。"
+    },
+    {
+      "id": "advanced-1",
+      "level": "advanced",
+      "sentence": "朝早くから練習していた選手たちが、ついに全国大会で優勝した。",
+      "image": "4clause.JPG",
+      "bunsetsu": ["朝早くから", "練習していた", "選手たちが", "ついに", "全国大会で", "優勝した"],
+      "structure": {
+        "type": "complex",
+        "subject_position": 1,
+        "predicate_position": 1,
+        "modifiers": [
+          {"position": 0, "modifies": "subject", "type": "連体修飾語"},
+          {"position": 1, "modifies": "subject", "type": "連体修飾語"},
+          {"position": 0, "modifies": "predicate", "type": "連用修飾語"},
+          {"position": 1, "modifies": "predicate", "type": "連用修飾語"}
+        ]
+      },
+      "correct_placement": {
+        "subject": "選手たちが",
+        "predicate": "優勝した",
+        "modifier1": "朝早くから",
+        "modifier2": "練習していた",
+        "modifier3": "ついに",
+        "modifier4": "全国大会で"
+      },
+      "explanation": "「選手たちが」が主語、「優勝した」が述語。「朝早くから練習していた」は主語を、「ついに」「全国大会で」は述語を修飾します。",
+      "hint": "長い修飾句は、その後に来る名詞を詳しく説明しています。"
+    },
+    {
+      "id": "advanced-2",
+      "level": "advanced",
+      "sentence": "山田先生が昨年から大切に育てていたバラの花が、今朝きれいに咲いた。",
+      "image": "7cluase.JPG",
+      "bunsetsu": ["山田先生が", "昨年から", "大切に", "育てていた", "バラの", "花が", "今朝", "きれいに", "咲いた"],
+      "structure": {
+        "type": "complex",
+        "subject_position": 2,
+        "predicate_position": 1,
+        "sub_clause": {
+          "subject": "山田先生が",
+          "predicate": "育てていた",
+          "modifies": "花"
+        },
+        "modifiers": [
+          {"position": 0, "modifies": "sub_predicate", "type": "連用修飾語"},
+          {"position": 1, "modifies": "sub_predicate", "type": "連用修飾語"},
+          {"position": 0, "modifies": "object", "type": "連体修飾語"},
+          {"position": 0, "modifies": "predicate", "type": "連用修飾語"},
+          {"position": 1, "modifies": "predicate", "type": "連用修飾語"}
+        ]
+      },
+      "correct_placement": {
+        "main_subject": "花が",
+        "main_predicate": "咲いた",
+        "sub_subject": "山田先生が",
+        "sub_predicate": "育てていた",
+        "modifier1": "昨年から",
+        "modifier2": "大切に",
+        "modifier3": "バラの",
+        "modifier4": "今朝",
+        "modifier5": "きれいに"
+      },
+      "explanation": "主文は「花が咲いた」。「山田先生が昨年から大切に育てていた」は「花」を修飾する連体修飾節です。",
+      "hint": "この文には２つの主語・述語のペアがあります。どちらが主文か考えてみましょう。"
+    },
+    {
+      "id": "expert-1",
+      "level": "expert",
+      "sentence": "毎朝ジョギングをしている健康的な生活を送る田中さんが、来月開催される市民マラソン大会に初めて参加することを決めた。",
+      "image": "7cluase.JPG",
+      "bunsetsu": ["毎朝", "ジョギングを", "している", "健康的な", "生活を", "送る", "田中さんが", "来月", "開催される", "市民マラソン大会に", "初めて", "参加することを", "決めた"],
+      "structure": {
+        "type": "multi_complex",
+        "main_subject": "田中さんが",
+        "main_predicate": "決めた",
+        "nested_structures": [
+          {
+            "type": "連体修飾節",
+            "predicate": "している",
+            "modifies": "生活"
+          },
+          {
+            "type": "連体修飾節",
+            "predicate": "送る",
+            "modifies": "田中さん"
+          },
+          {
+            "type": "連体修飾節",
+            "predicate": "開催される",
+            "modifies": "市民マラソン大会"
+          }
+        ]
+      },
+      "correct_placement": {
+        "main_subject": "田中さんが",
+        "main_predicate": "決めた",
+        "sub_structure1": {
+          "elements": ["毎朝", "ジョギングを", "している"],
+          "modifies": "生活"
+        },
+        "sub_structure2": {
+          "elements": ["健康的な", "生活を", "送る"],
+          "modifies": "田中さん"
+        },
+        "sub_structure3": {
+          "elements": ["来月", "開催される"],
+          "modifies": "市民マラソン大会"
+        },
+        "modifiers": ["初めて", "参加することを"]
+      },
+      "explanation": "主文は「田中さんが決めた」。複数の連体修飾節が入れ子構造になっている複雑な文です。",
+      "hint": "まず最も大きな主語・述語の関係を見つけ、その後で修飾関係を整理しましょう。"
+    },
+    {
+      "id": "exam-1",
+      "level": "exam",
+      "sentence": "世界中から集まった研究者たちが長年にわたって議論を重ねてきた環境問題の解決策が、ようやく国際会議で承認された。",
+      "image": "7cluase.JPG",
+      "bunsetsu": ["世界中から", "集まった", "研究者たちが", "長年にわたって", "議論を", "重ねてきた", "環境問題の", "解決策が", "ようやく", "国際会議で", "承認された"],
+      "structure": {
+        "type": "double_subject",
+        "main_subject": "解決策が",
+        "main_predicate": "承認された",
+        "sub_structures": [
+          {
+            "subject": "研究者たちが",
+            "predicate": "重ねてきた",
+            "modifies": "解決策"
+          }
+        ]
+      },
+      "correct_placement": {
+        "main_subject": "解決策が",
+        "main_predicate": "承認された",
+        "sub_elements": {
+          "sub_subject": "研究者たちが",
+          "sub_predicate": "重ねてきた",
+          "modifiers": ["世界中から", "集まった", "長年にわたって", "議論を", "環境問題の"]
+        },
+        "main_modifiers": ["ようやく", "国際会議で"]
+      },
+      "explanation": "主文は「解決策が承認された」。「世界中から集まった研究者たちが長年にわたって議論を重ねてきた」は「解決策」を修飾する長い連体修飾節です。",
+      "hint": "中学受験では、このような複雑な修飾構造を正確に理解することが求められます。"
+    }
+  ]
+} 

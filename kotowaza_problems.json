@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "kotowaza": "猿も木から落ちる",
+    "kotowaza_ruby": "<ruby>猿<rt>さる</rt></ruby>も<ruby>木<rt>き</rt></ruby>から<ruby>落<rt>お</rt></ruby>ちる",
+    "missing": "猿",
+    "meaning": "どんなに得意なことでも、時には失敗することがあるという意味。上手な人でも油断すると間違いを犯すことがある。",
+    "meaning_ruby": "どんなに<ruby>得意<rt>とくい</rt></ruby>なことでも、時には<ruby>失敗<rt>しっぱい</rt></ruby>することがあるという<ruby>意味<rt>いみ</rt></ruby>。<ruby>上手<rt>じょうず</rt></ruby>な人でも<ruby>油断<rt>ゆだん</rt></ruby>すると<ruby>間違<rt>まちが</rt></ruby>いを<ruby>犯<rt>おか</rt></ruby>すことがある。",
+    "choices": ["猿", "鳥", "猫", "犬"]
+  },
+  {
+    "id": 2,
+    "kotowaza": "石の上にも三年",
+    "kotowaza_ruby": "<ruby>石<rt>いし</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>にも<ruby>三年<rt>さんねん</rt></ruby>",
+    "missing": "三年",
+    "meaning": "辛いことでも辛抱強く続けていれば、いつかは報われるという意味。何事も継続が大切である。",
+    "meaning_ruby": "<ruby>辛<rt>つら</rt></ruby>いことでも<ruby>辛抱強<rt>しんぼうづよ</rt></ruby>く<ruby>続<rt>つづ</rt></ruby>けていれば、いつかは<ruby>報<rt>むく</rt></ruby>われるという<ruby>意味<rt>いみ</rt></ruby>。<ruby>何事<rt>なにごと</rt></ruby>も<ruby>継続<rt>けいぞく</rt></ruby>が<ruby>大切<rt>たいせつ</rt></ruby>である。",
+    "choices": ["三年", "五年", "十年", "一年"]
+  },
+  {
+    "id": 3,
+    "kotowaza": "井の中の蛙大海を知らず",
+    "kotowaza_ruby": "<ruby>井<rt>い</rt></ruby>の<ruby>中<rt>なか</rt></ruby>の<ruby>蛙<rt>かわず</rt></ruby><ruby>大海<rt>たいかい</rt></ruby>を<ruby>知<rt>し</rt></ruby>らず",
+    "missing": "蛙",
+    "meaning": "狭い世界にいて、広い世界のことを知らない人のこと。自分の知識や経験だけで物事を判断してはいけない。",
+    "meaning_ruby": "<ruby>狭<rt>せま</rt></ruby>い<ruby>世界<rt>せかい</rt></ruby>にいて、<ruby>広<rt>ひろ</rt></ruby>い<ruby>世界<rt>せかい</rt></ruby>のことを<ruby>知<rt>し</rt></ruby>らない人のこと。<ruby>自分<rt>じぶん</rt></ruby>の<ruby>知識<rt>ちしき</rt></ruby>や<ruby>経験<rt>けいけん</rt></ruby>だけで<ruby>物事<rt>ものごと</rt></ruby>を<ruby>判断<rt>はんだん</rt></ruby>してはいけない。",
+    "choices": ["蛙", "魚", "虫", "鳥"]
+  },
+  {
+    "id": 4,
+    "kotowaza": "花より団子",
+    "kotowaza_ruby": "<ruby>花<rt>はな</rt></ruby>より<ruby>団子<rt>だんご</rt></ruby>",
+    "missing": "団子",
+    "meaning": "美しいものよりも実用的なもの、風流よりも実益を重んじるという意味。",
+    "meaning_ruby": "<ruby>美<rt>うつく</rt></ruby>しいものよりも<ruby>実用的<rt>じつようてき</rt></ruby>なもの、<ruby>風流<rt>ふうりゅう</rt></ruby>よりも<ruby>実益<rt>じつえき</rt></ruby>を<ruby>重<rt>おも</rt></ruby>んじるという<ruby>意味<rt>いみ</rt></ruby>。",
+    "choices": ["団子", "饅頭", "煎餅", "大福"]
+  },
+  {
+    "id": 5,
+    "kotowaza": "継続は力なり",
+    "kotowaza_ruby": "<ruby>継続<rt>けいぞく</rt></ruby>は<ruby>力<rt>ちから</rt></ruby>なり",
+    "missing": "継続",
+    "meaning": "どんなことでも続けていれば、やがて大きな力となるという意味。努力を続けることの大切さを表す。",
+    "meaning_ruby": "どんなことでも<ruby>続<rt>つづ</rt></ruby>けていれば、やがて<ruby>大<rt>おお</rt></ruby>きな<ruby>力<rt>ちから</rt></ruby>となるという<ruby>意味<rt>いみ</rt></ruby>。<ruby>努力<rt>どりょく</rt></ruby>を<ruby>続<rt>つづ</rt></ruby>けることの<ruby>大切<rt>たいせつ</rt></ruby>さを<ruby>表<rt>あらわ</rt></ruby>す。",
+    "choices": ["継続", "努力", "勉強", "練習"]
+  },
+  {
+    "id": 6,
+    "kotowaza": "一期一会",
+    "kotowaza_ruby": "<ruby>一<rt>いち</rt></ruby><ruby>期<rt>ご</rt></ruby><ruby>一<rt>いち</rt></ruby><ruby>会<rt>え</rt></ruby>",
+    "missing": ["期", "会"],
+    "meaning": "一生に一度だけの機会。出会いを大切にすべきであるという意味。",
+    "meaning_ruby": "<ruby>一生<rt>いっしょう</rt></ruby>に<ruby>一度<rt>いちど</rt></ruby>だけの<ruby>機会<rt>きかい</rt></ruby>。<ruby>出会<rt>であ</rt></ruby>いを<ruby>大切<rt>たいせつ</rt></ruby>にすべきであるという<ruby>意味<rt>いみ</rt></ruby>。",
+    "choices": [
+      ["期", "生", "度", "瞬"],
+      ["会", "度", "回", "場"]
+    ]
+  },
+  {
+    "id": 7,
+    "kotowaza": "千里の道も一歩から",
+    "kotowaza_ruby": "<ruby>千里<rt>せんり</rt></ruby>の<ruby>道<rt>みち</rt></ruby>も<ruby>一歩<rt>いっぽ</rt></ruby>から",
+    "missing": ["千里", "一歩"],
+    "meaning": "どんなに遠い道のりでも、まず一歩踏み出すことから始まる。大きな目標も小さなことから始めることが大切。",
+    "meaning_ruby": "どんなに<ruby>遠<rt>とお</rt></ruby>い<ruby>道<rt>みち</rt></ruby>のりでも、まず<ruby>一歩<rt>いっぽ</rt></ruby><ruby>踏<rt>ふ</rt></ruby>み<ruby>出<rt>だ</rt></ruby>すことから<ruby>始<rt>はじ</rt></ruby>まる。<ruby>大<rt>おお</rt></ruby>きな<ruby>目標<rt>もくひょう</rt></ruby>も<ruby>小<rt>ちい</rt></ruby>さなことから<ruby>始<rt>はじ</rt></ruby>めることが<ruby>大切<rt>たいせつ</rt></ruby>。",
+    "choices": [
+      ["千里", "万里", "百里", "十里"],
+      ["一歩", "二歩", "三歩", "半歩"]
+    ]
+  },
+  {
+    "id": 8,
+    "kotowaza": "能ある鷹は爪を隠す",
+    "kotowaza_ruby": "<ruby>能<rt>のう</rt></ruby>ある<ruby>鷹<rt>たか</rt></ruby>は<ruby>爪<rt>つめ</rt></ruby>を<ruby>隠<rt>かく</rt></ruby>す",
+    "missing": "鷹",
+    "meaning": "本当に優秀な人は、普段はその才能を表に出さないという意味。謙虚であることの大切さを表す。",
+    "meaning_ruby": "<ruby>本当<rt>ほんとう</rt></ruby>に<ruby>優秀<rt>ゆうしゅう</rt></ruby>な人は、<ruby>普段<rt>ふだん</rt></ruby>はその<ruby>才能<rt>さいのう</rt></ruby>を<ruby>表<rt>おもて</rt></ruby>に<ruby>出<rt>だ</rt></ruby>さないという<ruby>意味<rt>いみ</rt></ruby>。<ruby>謙虚<rt>けんきょ</rt></ruby>であることの<ruby>大切<rt>たいせつ</rt></ruby>さを<ruby>表<rt>あらわ</rt></ruby>す。",
+    "choices": ["鷹", "鷲", "鳶", "隼"]
+  },
+  {
+    "id": 9,
+    "kotowaza": "七転び八起き",
+    "kotowaza_ruby": "<ruby>七転<rt>ななころ</rt></ruby>び<ruby>八起<rt>やお</rt></ruby>き",
+    "missing": ["七転び", "八起き"],
+    "meaning": "何度失敗しても、その度に立ち上がって頑張ることの大切さを表す。諦めずに努力し続けることを意味する。",
+    "meaning_ruby": "<ruby>何度<rt>なんど</rt></ruby><ruby>失敗<rt>しっぱい</rt></ruby>しても、その<ruby>度<rt>たび</rt></ruby>に<ruby>立<rt>た</rt></ruby>ち<ruby>上<rt>あ</rt></ruby>がって<ruby>頑張<rt>がんば</rt></ruby>ることの<ruby>大切<rt>たいせつ</rt></ruby>さを<ruby>表<rt>あらわ</rt></ruby>す。<ruby>諦<rt>あきら</rt></ruby>めずに<ruby>努力<rt>どりょく</rt></ruby>し<ruby>続<rt>つづ</rt></ruby>けることを<ruby>意味<rt>いみ</rt></ruby>する。",
+    "choices": [
+      ["七転び", "九転び", "六転び", "八転び"],
+      ["八起き", "九起き", "七起き", "十起き"]
+    ]
+  },
+  {
+    "id": 10,
+    "kotowaza": "蒔かぬ種は生えぬ",
+    "kotowaza_ruby": "<ruby>蒔<rt>ま</rt></ruby>かぬ<ruby>種<rt>たね</rt></ruby>は<ruby>生<rt>は</rt></ruby>えぬ",
+    "missing": "種",
+    "meaning": "何も行動を起こさなければ、何も結果は得られないという意味。努力なしに成果は得られない。",
+    "meaning_ruby": "<ruby>何<rt>なに</rt></ruby>も<ruby>行動<rt>こうどう</rt></ruby>を<ruby>起<rt>お</rt></ruby>こさなければ、<ruby>何<rt>なに</rt></ruby>も<ruby>結果<rt>けっか</rt></ruby>は<ruby>得<rt>え</rt></ruby>られないという<ruby>意味<rt>いみ</rt></ruby>。<ruby>努力<rt>どりょく</rt></ruby>なしに<ruby>成果<rt>せいか</rt></ruby>は<ruby>得<rt>え</rt></ruby>られない。",
+    "choices": ["種", "芽", "根", "花"]
+  }
+] 

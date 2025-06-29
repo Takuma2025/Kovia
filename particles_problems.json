@@ -1,0 +1,122 @@
+{
+  "title": "助詞の使い方",
+  "description": "助詞カードを正しい位置にドラッグして文を完成させよう！",
+  "problems": [
+    {
+      "id": "intro-1",
+      "level": "intro",
+      "sentence": "ねこ（　）鳴く。",
+      "blanks": [
+        {"position": 1, "correct": "が"}
+      ],
+      "cards": ["が", "は", "を"],
+      "explanation": "動物や人が何かをするときは「が」を使います。",
+      "hint": "ねこは何をしていますか？"
+    },
+    {
+      "id": "intro-2",
+      "level": "intro",
+      "sentence": "りんご（　）食べる。",
+      "blanks": [
+        {"position": 1, "correct": "を"}
+      ],
+      "cards": ["を", "が", "に"],
+      "explanation": "食べるものには「を」を使います。",
+      "hint": "何を食べるのでしょうか？"
+    },
+    {
+      "id": "intro-3",
+      "level": "intro",
+      "sentence": "学校（　）行く。",
+      "blanks": [
+        {"position": 1, "correct": "に"}
+      ],
+      "cards": ["に", "で", "を"],
+      "explanation": "行く場所には「に」を使います。",
+      "hint": "どこに行くのでしょうか？"
+    },
+    {
+      "id": 1,
+      "level": "basic",
+      "sentence": "私（　）友達（　）公園（　）行った。",
+      "blanks": [
+        {"position": 1, "correct": "は"},
+        {"position": 2, "correct": "と"}, 
+        {"position": 3, "correct": "に"}
+      ],
+      "cards": ["は", "と", "に"],
+      "explanation": "主語を表すときは「は」、一緒にという意味では「と」、目的地を表すときは「に」を使います。",
+      "hint": "誰が、誰と、どこに、という関係を考えてみましょう。"
+    },
+    {
+      "id": 2,
+      "level": "basic",
+      "sentence": "お母さん（　）お弁当（　）作ってくれました。",
+      "blanks": [
+        {"position": 1, "correct": "が"},
+        {"position": 2, "correct": "を"}
+      ],
+      "cards": ["が", "を", "に"],
+      "explanation": "動作をする人には「が」、動作の対象には「を」を使います。",
+      "hint": "誰が何をしたのかを考えてみましょう。"
+    },
+    {
+      "id": 3,
+      "level": "basic",
+      "sentence": "図書館（　）本（　）借りました。",
+      "blanks": [
+        {"position": 1, "correct": "で"},
+        {"position": 2, "correct": "を"}
+      ],
+      "cards": ["で", "を", "に"],
+      "explanation": "場所を表すときは「で」、借りるものには「を」を使います。",
+      "hint": "どこで何をしたのかを考えてみましょう。"
+    },
+    {
+      "id": "exam-1",
+      "level": "exam",
+      "sentence": "この問題（　）関して（　）、専門家（　）意見（　）聞くべきだ（　）思います。",
+      "blanks": [
+        {"position": 1, "correct": "に"},
+        {"position": 2, "correct": "は"},
+        {"position": 3, "correct": "の"},
+        {"position": 4, "correct": "を"},
+        {"position": 5, "correct": "と"}
+      ],
+      "cards": ["に", "は", "の", "を", "と"],
+      "explanation": "「関して」には「に」、主題には「は」、所有には「の」、対象には「を」、引用には「と」を使います。",
+      "hint": "それぞれの助詞の役割を考えて、文脈に合うものを選びましょう。"
+    },
+    {
+      "id": "exam-2",
+      "level": "exam",
+      "sentence": "彼（　）研究（　）対する情熱（　）、誰（　）も負けない自信（　）持っている。",
+      "blanks": [
+        {"position": 1, "correct": "の"},
+        {"position": 2, "correct": "に"},
+        {"position": 3, "correct": "は"},
+        {"position": 4, "correct": "に"},
+        {"position": 5, "correct": "を"}
+      ],
+      "cards": ["の", "に", "は", "を"],
+      "explanation": "所有を表す「の」、対象を表す「に」、主題を表す「は」、そして動作の対象を表す「を」を適切に使い分けます。",
+      "hint": "複雑な文構造の中で、各助詞がどのような関係を表すかを考えましょう。"
+    },
+    {
+      "id": "exam-3",
+      "level": "exam",
+      "sentence": "このたび（　）、長年（　）努力（　）実り、念願（　）資格（　）取得する（　）ができました。",
+      "blanks": [
+        {"position": 1, "correct": "は"},
+        {"position": 2, "correct": "の"},
+        {"position": 3, "correct": "が"},
+        {"position": 4, "correct": "の"},
+        {"position": 5, "correct": "を"},
+        {"position": 6, "correct": "こと"}
+      ],
+      "cards": ["は", "の", "が", "を", "こと"],
+      "explanation": "時間の始まりには「は」、期間を表す「の」、主語を表す「が」、対象を表す「を」、動作の名詞化には「こと」を使います。",
+      "hint": "文全体の構造を理解して、各部分の役割に応じた助詞を選択しましょう。"
+    }
+  ]
+} 

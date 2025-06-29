@@ -1,0 +1,146 @@
+{
+  "title": "修飾語の問題",
+  "description": "修飾語が、どの語を修飾しているかをタップしてください。修飾語は右線で示され、修飾される語は緑色になります。",
+  "problems": [
+    {
+      "id": 1,
+      "sentence": "美しい花が咲いている。",
+      "words": [
+        {"text": "美しい", "type": "modifier", "position": 0, "isMarked": true},
+        {"text": "花が", "type": "noun", "position": 1},
+        {"text": "咲いている", "type": "predicate", "position": 2}
+      ],
+      "marked_modifier": 0,
+      "correct_modified": 1,
+      "explanation": "「美しい」が修飾語で、「花」を修飾しています。",
+      "hint": "修飾語「美しい」は何を詳しく説明しているでしょうか？"
+    },
+    {
+      "id": 2,
+      "sentence": "大きな犬が元気に走っている。",
+      "words": [
+        {"text": "大きな", "type": "modifier", "position": 0, "isMarked": true},
+        {"text": "犬が", "type": "noun", "position": 1},
+        {"text": "元気に", "type": "adverb", "position": 2},
+        {"text": "走っている", "type": "predicate", "position": 3}
+      ],
+      "marked_modifier": 0,
+      "correct_modified": 1,
+      "explanation": "「大きな」が修飾語で、「犬」を修飾しています。",
+      "hint": "修飾語「大きな」はどの語を修飾しているでしょうか？"
+    },
+    {
+      "id": 3,
+      "sentence": "子どもが静かに本を読んでいる。",
+      "words": [
+        {"text": "子どもが", "type": "subject", "position": 0},
+        {"text": "静かに", "type": "modifier", "position": 1, "isMarked": true},
+        {"text": "本を", "type": "object", "position": 2},
+        {"text": "読んでいる", "type": "predicate", "position": 3}
+      ],
+      "marked_modifier": 1,
+      "correct_modified": 3,
+      "explanation": "「静かに」が修飾語で、「読んでいる」を修飾しています。",
+      "hint": "修飾語「静かに」はどの動作を修飾しているでしょうか？"
+    },
+    {
+      "id": 4,
+      "sentence": "赤い鳥が空を飛んでいる。",
+      "words": [
+        {"text": "赤い", "type": "modifier", "position": 0, "isMarked": true},
+        {"text": "鳥が", "type": "noun", "position": 1},
+        {"text": "空を", "type": "object", "position": 2},
+        {"text": "飛んでいる", "type": "predicate", "position": 3}
+      ],
+      "marked_modifier": 0,
+      "correct_modified": 1,
+      "explanation": "「赤い」が修飾語で、「鳥」を修飾しています。",
+      "hint": "修飾語「赤い」は何の色を表しているでしょうか？"
+    },
+    {
+      "id": 5,
+      "sentence": "小さな猫がゆっくりと歩いている。",
+      "words": [
+        {"text": "小さな", "type": "modifier", "position": 0},
+        {"text": "猫が", "type": "noun", "position": 1},
+        {"text": "ゆっくりと", "type": "modifier", "position": 2, "isMarked": true},
+        {"text": "歩いている", "type": "predicate", "position": 3}
+      ],
+      "marked_modifier": 2,
+      "correct_modified": 3,
+      "explanation": "「ゆっくりと」が修飾語で、「歩いている」を修飾しています。",
+      "hint": "修飾語「ゆっくりと」はどの動作を修飾しているでしょうか？"
+    },
+    {
+      "id": 6,
+      "sentence": "新しい靴を履いて学校に行った。",
+      "words": [
+        {"text": "新しい", "type": "modifier", "position": 0, "isMarked": true},
+        {"text": "靴を", "type": "object", "position": 1},
+        {"text": "履いて", "type": "verb", "position": 2},
+        {"text": "学校に", "type": "place", "position": 3},
+        {"text": "行った", "type": "predicate", "position": 4}
+      ],
+      "marked_modifier": 0,
+      "correct_modified": 1,
+      "explanation": "「新しい」が修飾語で、「靴」を修飾しています。",
+      "hint": "修飾語「新しい」はどの物を修飾しているでしょうか？"
+    },
+    {
+      "id": 7,
+      "sentence": "お母さんが優しく話しかけてくれた。",
+      "words": [
+        {"text": "お母さんが", "type": "subject", "position": 0},
+        {"text": "優しく", "type": "modifier", "position": 1, "isMarked": true},
+        {"text": "話しかけて", "type": "verb", "position": 2},
+        {"text": "くれた", "type": "auxiliary", "position": 3}
+      ],
+      "marked_modifier": 1,
+      "correct_modified": 2,
+      "explanation": "「優しく」が修飾語で、「話しかけて」を修飾しています。",
+      "hint": "修飾語「優しく」はどの動作を修飾しているでしょうか？"
+    },
+    {
+      "id": 8,
+      "sentence": "青い空に白い雲が浮かんでいる。",
+      "words": [
+        {"text": "青い", "type": "modifier", "position": 0},
+        {"text": "空に", "type": "place", "position": 1},
+        {"text": "白い", "type": "modifier", "position": 2, "isMarked": true},
+        {"text": "雲が", "type": "noun", "position": 3},
+        {"text": "浮かんでいる", "type": "predicate", "position": 4}
+      ],
+      "marked_modifier": 2,
+      "correct_modified": 3,
+      "explanation": "「白い」が修飾語で、「雲」を修飾しています。",
+      "hint": "修飾語「白い」はどの物の色を表しているでしょうか？"
+    },
+    {
+      "id": 9,
+      "sentence": "友達が一生懸命勉強している。",
+      "words": [
+        {"text": "友達が", "type": "subject", "position": 0},
+        {"text": "一生懸命", "type": "modifier", "position": 1, "isMarked": true},
+        {"text": "勉強している", "type": "predicate", "position": 2}
+      ],
+      "marked_modifier": 1,
+      "correct_modified": 2,
+      "explanation": "「一生懸命」が修飾語で、「勉強している」を修飾しています。",
+      "hint": "修飾語「一生懸命」はどの動作を修飾しているでしょうか？"
+    },
+    {
+      "id": 10,
+      "sentence": "古い家の前で遊んでいる。",
+      "words": [
+        {"text": "古い", "type": "modifier", "position": 0, "isMarked": true},
+        {"text": "家の", "type": "noun", "position": 1},
+        {"text": "前で", "type": "place", "position": 2},
+        {"text": "遊んでいる", "type": "predicate", "position": 3}
+      ],
+      "marked_modifier": 0,
+      "correct_modified": 1,
+      "explanation": "「古い」が修飾語で、「家」を修飾しています。",
+      "hint": "修飾語「古い」はどの物を修飾しているでしょうか？"
+    }
+  ]
+} 
