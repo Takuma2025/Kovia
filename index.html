@@ -23832,21 +23832,99 @@ rt {
     const setupCircleTouchEvents = () => {
       const circles = document.querySelectorAll('circle[onclick]');
       circles.forEach(circle => {
-        // 既存のonclickハンドラーを保存
-        const originalOnClick = circle.getAttribute('onclick');
+        // タッチデバイスではmouseoverとmouseoutを削除
+        circle.removeAttribute('onmouseover');
+        circle.removeAttribute('onmouseout');
+        
+        // ボタンIDとの対応マップ
+        const buttonMap = {
+          'venn-reading': 'goReadingTrainingBtn',
+          'venn-grammar': 'goGrammarTrainingBtn',
+          'venn-kanji': 'goKanjiVocabBtn',
+          'venn-logic': 'goLogicBtn'
+        };
         
         // タッチイベントハンドラーを追加
-        circle.addEventListener('touchstart', function(e) {
-          e.preventDefault(); // ダブルタップズームを防ぐ
-          // オリジナルのonclickを実行
-          if (originalOnClick) {
-            eval(originalOnClick);
+        const handleTouch = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // 対応するボタンを取得してクリック
+          const circleId = circle.getAttribute('id');
+          const buttonId = buttonMap[circleId];
+          console.log('Circle touched:', circleId, '-> Button:', buttonId);
+          
+          if (buttonId) {
+            console.log('Handling touch for:', circleId, '-> Button:', buttonId);
+            
+            // ボタンのonclickイベントを直接実行
+            const button = document.getElementById(buttonId);
+            if (button && button.onclick) {
+              console.log('Executing button onclick:', buttonId);
+              button.onclick();
+            } else {
+              // フォールバック：IDで要素を取得して直接画面遷移
+              const boxMap = {
+                'goReadingTrainingBtn': 'readingTrainingBox',
+                'goGrammarTrainingBtn': 'grammarTrainingBox',
+                'goKanjiVocabBtn': 'kanjiVocabTrainingBox',
+                'goLogicBtn': 'logicTrainingBox'
+              };
+              
+              const boxId = boxMap[buttonId];
+              if (boxId) {
+                const box = document.getElementById(boxId);
+                if (box && window.showBox) {
+                  console.log('Direct showBox call:', boxId);
+                  window.showBox(box);
+                  
+                  // 対応するレンダリング関数を実行
+                  if (boxId === 'readingTrainingBox' && window.renderReadingTrainingMenu) {
+                    window.renderReadingTrainingMenu();
+                  } else if (boxId === 'grammarTrainingBox' && window.renderGrammarMenu) {
+                    window.renderGrammarMenu();
+                  } else if (boxId === 'kanjiVocabTrainingBox' && window.renderKanjiVocabMenu) {
+                    window.renderKanjiVocabMenu();
+                  } else if (boxId === 'logicTrainingBox' && window.renderLogicMenu) {
+                    window.renderLogicMenu();
+                  }
+                }
+              }
+            }
           }
-        }, {passive: false});
+        };
+        
+        // タッチとクリックの両方に対応
+        circle.addEventListener('touchstart', handleTouch, {passive: false});
+        circle.addEventListener('click', (e) => {
+          if (!isTouchDevice) {
+            handleTouch(e);
+          }
+        });
         
         // CSSでタッチフィードバックを改善
         circle.style.setProperty('-webkit-tap-highlight-color', 'transparent');
         circle.style.setProperty('touch-action', 'manipulation');
+        circle.style.setProperty('cursor', 'pointer');
+        
+        // タッチ時のビジュアルフィードバック
+        circle.addEventListener('touchstart', (e) => {
+          circle.setAttribute('r', '105');
+          circle.setAttribute('stroke-width', '4');
+          // タッチスタート時にフラグを設定
+          circle.dataset.touchStarted = 'true';
+        });
+        
+        circle.addEventListener('touchend', (e) => {
+          circle.setAttribute('r', '95');
+          circle.setAttribute('stroke-width', '3');
+          
+          // タッチエンドでも念のため処理を実行
+          if (circle.dataset.touchStarted === 'true') {
+            circle.dataset.touchStarted = 'false';
+            handleTouch(e);
+          }
+        });
       });
     };
     
@@ -23899,12 +23977,20 @@ rt {
       });
     };
     
-    // 初期セットアップ
-    setTimeout(() => {
+    // 初期セットアップ（複数回実行して確実に設定）
+    const setupAllTouchEvents = () => {
       setupCircleTouchEvents();
       setupButtonTouchEvents();
       setupTouchForDynamicElements();
-    }, 100);
+    };
+    
+    // 複数のタイミングで実行
+    setTimeout(setupAllTouchEvents, 100);
+    setTimeout(setupAllTouchEvents, 500);
+    setTimeout(setupAllTouchEvents, 1000);
+    
+    // ページが完全に読み込まれた後にも実行
+    window.addEventListener('load', setupAllTouchEvents);
     
     // DOMの変更を監視して動的要素にも対応
     const touchObserver = new MutationObserver(() => {
