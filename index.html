@@ -9359,22 +9359,22 @@ ruby rt, rt {
       </style>
       
       <div class="training-menu-grid">
-        <button class="training-menu-btn reading-btn" onclick="document.getElementById('goReadingTrainingBtn').click();">
+        <button class="training-menu-btn reading-btn" onclick="showBox(readingTrainingBox); renderReadingTrainingMenu();">
           <div class="furigana">おんどく</div>
           <div class="title">音読<br>トレーニング</div>
         </button>
         
-        <button class="training-menu-btn grammar-btn" onclick="document.getElementById('goGrammarTrainingBtn').click();">
+        <button class="training-menu-btn grammar-btn" onclick="showBox(grammarTrainingBox); renderGrammarMenu();">
           <div class="furigana">ぶんぽう</div>
           <div class="title">文法<br>トレーニング</div>
         </button>
         
-        <button class="training-menu-btn kanji-btn" onclick="document.getElementById('goKanjiVocabBtn').click();">
+        <button class="training-menu-btn kanji-btn" onclick="showBox(kanjiVocabTrainingBox); renderKanjiVocabMenu();">
           <div class="furigana">かんじ・ごい</div>
           <div class="title">漢字・語彙<br>トレーニング</div>
         </button>
         
-        <button class="training-menu-btn logic-btn" onclick="document.getElementById('goLogicBtn').click();">
+        <button class="training-menu-btn logic-btn" onclick="showBox(logicTrainingBox); renderLogicMenu();">
           <div class="furigana">ろんり</div>
           <div class="title">論理<br>トレーニング</div>
         </button>
