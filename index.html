@@ -29,8 +29,25 @@ html, body {
   .start-btn:hover,
   .small-btn:hover,
   .audio-btn:hover,
-  .buy-btn:hover {
+  .buy-btn:hover,
+  circle:hover,
+  svg:hover {
     transform: none !important;
+    r: auto !important;
+    stroke-width: auto !important;
+  }
+  
+  /* SVGのマウスイベントを完全に無効化 */
+  svg circle {
+    pointer-events: auto !important;
+  }
+}
+
+/* タッチデバイス専用スタイル */
+@media (pointer: coarse) {
+  circle[id^="venn-"] {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
+    cursor: pointer !important;
   }
 }
 
@@ -23836,9 +23853,27 @@ rt {
         const originalOnclick = circle.getAttribute('onclick');
         circle.dataset.originalOnclick = originalOnclick || '';
         
-        // タッチデバイスではmouseoverとmouseoutを削除
+        // タッチデバイスでは完全にマウスイベントを無効化
         circle.removeAttribute('onmouseover');
         circle.removeAttribute('onmouseout');
+        circle.removeAttribute('onclick');
+        
+        // タッチデバイスでマウスイベントを完全に無効化
+        circle.style.setProperty('pointer-events', 'auto');
+        
+        // マウスイベントをキャンセル
+        const cancelMouseEvent = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          return false;
+        };
+        
+        circle.addEventListener('mouseover', cancelMouseEvent, {capture: true, passive: false});
+        circle.addEventListener('mouseout', cancelMouseEvent, {capture: true, passive: false});
+        circle.addEventListener('mousedown', cancelMouseEvent, {capture: true, passive: false});
+        circle.addEventListener('mouseup', cancelMouseEvent, {capture: true, passive: false});
+        circle.addEventListener('mousemove', cancelMouseEvent, {capture: true, passive: false});
         
         // ボタンIDとの対応マップ
         const buttonMap = {
@@ -23848,162 +23883,61 @@ rt {
           'venn-logic': 'goLogicBtn'
         };
         
-        // タッチイベントハンドラーを追加
+                // シンプルなタッチイベントハンドラー
         const handleTouch = (e) => {
           e.preventDefault();
           e.stopPropagation();
           
           const circleId = circle.getAttribute('id');
-          const buttonId = buttonMap[circleId];
-          console.log('=== Touch Event Debug ===');
-          console.log('Circle touched:', circleId, '-> Button:', buttonId);
+          console.log('Touch on circle:', circleId);
           
-          if (buttonId) {
+          // 直接onclickの内容を実行
+          const originalOnclick = circle.dataset.originalOnclick;
+          if (originalOnclick) {
+            console.log('Executing saved onclick:', originalOnclick);
             try {
-              // 方法1: 保存されたonclick属性の内容を直接実行
-              const originalOnclick = circle.dataset.originalOnclick || circle.getAttribute('onclick');
-              console.log('Original onclick:', originalOnclick);
-              
-              if (originalOnclick) {
-                console.log('Executing original onclick...');
-                eval(originalOnclick);
-                return;
-              }
-              
-              // 方法2: ボタンのonclickイベントを実行
-              const button = document.getElementById(buttonId);
-              console.log('Button found:', !!button);
-              console.log('Button onclick:', !!button?.onclick);
-              
-              if (button && button.onclick) {
-                console.log('Executing button onclick:', buttonId);
-                button.onclick();
-                return;
-              }
-              
-              // 方法3: 直接画面遷移関数を呼び出し
-              console.log('Trying direct function calls...');
-              console.log('showBox function exists:', typeof window.showBox);
-              
-              switch (buttonId) {
-                                 case 'goReadingTrainingBtn':
-                   console.log('Calling reading training...');
-                   if (typeof window.goReadingTrainingBtn !== 'undefined' && window.goReadingTrainingBtn.onclick) {
-                     console.log('Using button onclick function');
-                     window.goReadingTrainingBtn.onclick();
-                   } else if (window.showBox && window.readingTrainingBox) {
-                     console.log('Using direct showBox call');
-                     window.showBox(window.readingTrainingBox);
-                     console.log('Called showBox for readingTrainingBox');
-                     if (window.renderReadingTrainingMenu) {
-                       window.renderReadingTrainingMenu();
-                       console.log('Called renderReadingTrainingMenu');
-                     }
-                   } else {
-                     console.error('Cannot navigate to reading training - missing functions or elements');
-                   }
-                   break;
-                  
-                                 case 'goGrammarTrainingBtn':
-                   console.log('Calling grammar training...');
-                   if (typeof window.goGrammarTrainingBtn !== 'undefined' && window.goGrammarTrainingBtn.onclick) {
-                     console.log('Using grammar button onclick function');
-                     window.goGrammarTrainingBtn.onclick();
-                   } else if (window.showBox && window.grammarTrainingBox) {
-                     console.log('Using direct showBox call for grammar');
-                     window.showBox(window.grammarTrainingBox);
-                     console.log('Called showBox for grammarTrainingBox');
-                     if (window.renderGrammarMenu) {
-                       window.renderGrammarMenu();
-                       console.log('Called renderGrammarMenu');
-                     }
-                   } else {
-                     console.error('Cannot navigate to grammar training - missing functions or elements');
-                   }
-                   break;
-                   
-                 case 'goKanjiVocabBtn':
-                   console.log('Calling kanji vocab training...');
-                   if (typeof window.goKanjiVocabBtn !== 'undefined' && window.goKanjiVocabBtn.onclick) {
-                     console.log('Using kanji vocab button onclick function');
-                     window.goKanjiVocabBtn.onclick();
-                   } else if (window.showBox && window.kanjiVocabTrainingBox) {
-                     console.log('Using direct showBox call for kanji vocab');
-                     window.showBox(window.kanjiVocabTrainingBox);
-                     console.log('Called showBox for kanjiVocabTrainingBox');
-                     if (window.renderKanjiVocabMenu) {
-                       window.renderKanjiVocabMenu();
-                       console.log('Called renderKanjiVocabMenu');
-                     }
-                   } else {
-                     console.error('Cannot navigate to kanji vocab training - missing functions or elements');
-                   }
-                   break;
-                   
-                 case 'goLogicBtn':
-                   console.log('Calling logic training...');
-                   const logicBtn = document.getElementById('goLogicBtn');
-                   if (logicBtn && logicBtn.onclick) {
-                     console.log('Using logic button onclick function');
-                     logicBtn.onclick();
-                   } else if (window.showBox && window.logicTrainingBox) {
-                     console.log('Using direct showBox call for logic');
-                     window.showBox(window.logicTrainingBox);
-                     console.log('Called showBox for logicTrainingBox');
-                     if (window.renderLogicMenu) {
-                       window.renderLogicMenu();
-                       console.log('Called renderLogicMenu');
-                     }
-                   } else {
-                     console.error('Cannot navigate to logic training - missing functions or elements');
-                   }
-                   break;
-              }
-              
-              console.log('Touch handling completed');
-              
+              eval(originalOnclick);
             } catch (error) {
-              console.error('Error in touch handler:', error);
+              console.error('Error executing onclick:', error);
             }
           }
         };
         
-        // タッチとクリックの両方に対応
+        // タッチデバイスではタッチイベントのみを使用
         circle.addEventListener('touchstart', handleTouch, {passive: false});
-        circle.addEventListener('click', (e) => {
-          if (!isTouchDevice) {
-            handleTouch(e);
-          }
-        });
+        
+        // 非タッチデバイス用にclickイベントを設定
+        if (!isTouchDevice) {
+          circle.addEventListener('click', handleTouch);
+        }
         
         // CSSでタッチフィードバックを改善
         circle.style.setProperty('-webkit-tap-highlight-color', 'transparent');
         circle.style.setProperty('touch-action', 'manipulation');
         circle.style.setProperty('cursor', 'pointer');
         
-        // タッチ時のビジュアルフィードバック
+        // タッチ時のビジュアルフィードバック（handleTouchとは別に実行）
         circle.addEventListener('touchstart', (e) => {
-          circle.setAttribute('r', '105');
-          circle.setAttribute('stroke-width', '4');
-          // 重複実行を防ぐためのタイムスタンプ
-          circle.dataset.lastTouch = Date.now();
-        });
-        
-        circle.addEventListener('touchend', (e) => {
-          circle.setAttribute('r', '95');
-          circle.setAttribute('stroke-width', '3');
-          
-          // 短時間での重複実行を防ぐ
+          // 重複実行を防ぐ
           const lastTouch = parseInt(circle.dataset.lastTouch || '0');
           const now = Date.now();
           if (now - lastTouch < 500) {
             console.log('Preventing duplicate touch execution');
+            e.preventDefault();
+            e.stopPropagation();
             return;
           }
           circle.dataset.lastTouch = now;
           
-          // タッチエンドで実際の処理を実行
-          handleTouch(e);
+          // ビジュアルフィードバック
+          circle.setAttribute('r', '105');
+          circle.setAttribute('stroke-width', '4');
+        }, {passive: false});
+        
+        circle.addEventListener('touchend', (e) => {
+          // ビジュアルフィードバックのリセットのみ
+          circle.setAttribute('r', '95');
+          circle.setAttribute('stroke-width', '3');
         });
       });
     };
